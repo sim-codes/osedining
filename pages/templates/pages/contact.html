@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Ose Dinning - Contact Us{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container contact-ctn">
+        <h1>Get In Touch</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-light mt-2 mb-2">Send</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

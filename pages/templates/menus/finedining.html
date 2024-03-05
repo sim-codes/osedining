@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Ose Dinning - Fine Dining{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container">
+        <h1>Fine Dining</h1>
+        <p>Menu is designed for a minimum of 10 (ten) guests </p>
+
+        <label for="menu-select">Choose menu type:</label>
+
+        <select class="form-select" name="menus" id="menu-select">
+        <option value="">--Please choose an option--</option>
+        <option value="menu-1">Menu 1</option>
+        <option value="menu-2">Menu 2</option>
+        <option value="menu-3">Menu 3</option>
+        <option value="menu-4">Menu 4</option>
+        <option value="menu-5">Menu 5</option>
+        <option value="menu-6">Menu 6</option>
+        <option value="menu-7">Menu 7</option>
+        </select>
+
+
+        <div id="menu-target" class="m-2">
+
+        </div>
+
+        <!--
+        <div id="agreement">
+            <div id="wrapper">
+                <label for="yes_no_radio">Are we allowed to take pictures of you and your guest?</label>
+                <input type="radio" name="person" checked>Yes</input>
+                <input type="radio" name="person">No</input>
+            </div>
+    
+            <div id="wrapper">
+                <label for="yes_no_radio">Are we allowed to take pictures of your apartment? </label>
+                <input type="radio" name="apartment" checked>Yes</input>
+                <input type="radio" name="apartment">No</input>
+            </div>
+    
+            <div id="wrapper">
+                <label for="yes_no_radio">Can we use your event content for our business promotions?</label>
+                <input type="radio" name="promotion" checked>Yes</input>
+                <input type="radio" name="promotion">No</input>
+            </div>
+        </div>
+        -->
+
+
+        <button id="cmd" type="button" class="btn btn-outline-light">Generate Invoice</button>
+        <a href="" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reserve Now</a>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form action="{% url 'pages:reserve' %}" method="post">
+        <div class="modal-header">
+          <h1 class="modal-title" id="staticBackdropLabel">RESERVATIONS</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-light mt-2 mb-2">Reserve</button>
+        </div>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="{% static 'js/menu.js' %}"></script>
+
+{% endblock %}
