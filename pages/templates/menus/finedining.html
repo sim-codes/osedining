@@ -5,55 +5,53 @@
 {% block title %}Ose Dinning - Fine Dining{% endblock %}
 
 {% block content %}
-<main>
-    <div class="container">
-        <h1>Fine Dining</h1>
-        <p>Menu is designed for a minimum of 10 (ten) guests </p>
+<main id="main">
 
-        <label for="menu-select">Choose menu type:</label>
+  <!-- Section - Services -->
+    <!-- Service 6 - Bootstrap Brain Component -->
+    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">Fine Dining</h3>
+            <h2 class="display-5 mb-1 mb-md-3 text-center">Menu is designed for a minimum of 10 (ten) guests</h2>
+            <hr class="w-50 mx-auto mb-2 mb-xl-5 border-dark-subtle">
+          </div>
+        </div>
+      </div>
 
-        <select class="form-select" name="menus" id="menu-select">
-        <option value="">--Please choose an option--</option>
-        <option value="menu-1">Menu 1</option>
-        <option value="menu-2">Menu 2</option>
-        <option value="menu-3">Menu 3</option>
-        <option value="menu-4">Menu 4</option>
-        <option value="menu-5">Menu 5</option>
-        <option value="menu-6">Menu 6</option>
-        <option value="menu-7">Menu 7</option>
-        </select>
+      <div class="container mb-1 mb-md-3">
+        <div class="row gy-5 gy-lg-0 align-items-lg-center">
 
-
-        <div id="menu-target" class="m-2">
+          <label for="menu-select">Choose menu type:</label>
+          <select class="form-select" name="menus" id="menu-select">
+            <option value="">--Please choose an option--</option>
+            <option value="menu-1">Menu 1</option>
+            <option value="menu-2">Menu 2</option>
+            <option value="menu-3">Menu 3</option>
+            <option value="menu-4">Menu 4</option>
+            <option value="menu-5">Menu 5</option>
+            <option value="menu-6">Menu 6</option>
+            <option value="menu-7">Menu 7</option>
+          </select>
 
         </div>
+      </div>
 
-        <!--
-        <div id="agreement">
-            <div id="wrapper">
-                <label for="yes_no_radio">Are we allowed to take pictures of you and your guest?</label>
-                <input type="radio" name="person" checked>Yes</input>
-                <input type="radio" name="person">No</input>
+      <div class="container overflow-hidden">
+        <div class="row gy-2 gy-md-0 gx-xxl-3">
+          <div class="col-12 col-md-12">
+            <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
+              <div class="card-body">
+                <div id="menu-target" class="m-2"></div>
+                <button id="cmd" type="button" class="btn btn-outline-dark m-2">Generate Invoice</button>
+                <a href="" class="btn btn-outline-dark m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reserve Now</a>           
+                <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
+              </div>
             </div>
-    
-            <div id="wrapper">
-                <label for="yes_no_radio">Are we allowed to take pictures of your apartment? </label>
-                <input type="radio" name="apartment" checked>Yes</input>
-                <input type="radio" name="apartment">No</input>
-            </div>
-    
-            <div id="wrapper">
-                <label for="yes_no_radio">Can we use your event content for our business promotions?</label>
-                <input type="radio" name="promotion" checked>Yes</input>
-                <input type="radio" name="promotion">No</input>
-            </div>
-        </div>
-        -->
+          </div>
+    </section>
 
-
-        <button id="cmd" type="button" class="btn btn-outline-light">Generate Invoice</button>
-        <a href="" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reserve Now</a>
-    </div>
     <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

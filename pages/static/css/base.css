@@ -11,82 +11,22 @@
     font-optical-sizing: auto;
 }
 
-.hero-section {
-    /* margin: 0 3rem; */
-    color: #fff;
-    height: 80vh;
-    width: auto;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1620296595801-3cd364a12807');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: #AE7722;
-    color: #000;
-    border: none;
-    outline: none;
-}
-
-.btn-primary:hover {
-    background-color: #FFF;
-    color: #000;
-    transition: .5s;
-    border: 1px solid #000;
-}
-
-.hero-section h1 {
-    font-size: 5rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-top: 8%;
-}
-
-.navbar-brand .logo {
-    width: 5rem;
-}
-
-
-.dinner-type {
-    color: #333;
-    height: 80vh;
-    background-color: #FFF;
-    
-}
-
-.dinner-type p {
-    text-align: justify;
-}
-
-.dinner-type a, footer a {
-    text-decoration: none;
-}
-
-.img-ctn img {
-    width: 5rem;
-}
-
-.contact-ctn {
-    max-width: 50%;
-}
-
-.col-sm img {
-    width: 25rem;
-}
-
-.first-img {
-    background-image: url('https://images.unsplash.com/photo-1476224203421-9ac39bcb3327');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: scroll;
-    background-size: cover;
+.form-group textarea:focus,
+.row .form-select:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus { 
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #fafafa;
+  outline: 0 none;
 }

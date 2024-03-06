@@ -5,19 +5,39 @@
 {% block title %}Ose Dinning - Contact Us{% endblock %}
 
 {% block content %}
-<main>
-    <div class="container contact-ctn">
-        <h1>Get In Touch</h1>
-
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form|bootstrap }}
-            
-            <div class="form-actions">
-                <button type="submit" class="btn btn-light mt-2 mb-2">Send</button>
+<main id="main">
+    <!-- Section - Services -->
+    <!-- Service 6 - Bootstrap Brain Component -->
+    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+              <h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">Contact Us</h3>
+              <h2 class="display-5 mb-1 mb-md-3 text-center">Get In Touch</h2>
+              <hr class="w-50 mx-auto mb-2 mb-xl-5 border-dark-subtle">
             </div>
-        </form>
-    </div>
+          </div>
+        </div>
+  
+        <div class="container overflow-hidden">
+          <div class="row gy-2 gy-md-0 gx-xxl-3">
+            <div class="col-12 col-md-12">
+              <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
+                <div class="card-body">
+                  
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        {{ form|bootstrap }}
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-light mt-2 mb-2">Send</button>
+                        </div>
+                    </form>
+                  <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
+                </div>
+              </div>
+            </div>
+      </section>
 </main>
 
 {% endblock %}

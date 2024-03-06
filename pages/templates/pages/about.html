@@ -3,55 +3,51 @@
 {% load bootstrap %}
 
 {% block title %}Ose Dining - About Us{% endblock %}
-{% block styling %}<link rel="stylesheet" href="{% static 'css/about.css' %}">{% endblock %}
+{% block styling %}<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/abouts/about-1/assets/css/about-1.css" />{% endblock %}
 
 {% block content %}
-
-<main class="container-fluid">
-	<h1 class="text-center">About</h1>
-
-	<div class="menu-ctn">
-		<div class="menu-content">
-			<div class="menu__content--about">
-				<h1>SNACK &amp; DIPS</h1>
-				<span>Menu 1</span>
-				<h3></h3>
-				<p>
-					<span>Chicken skewer</span>
-					Chicken on skewer crusted with herbs and cashew, served with oyster &amp; basil mayo.
-					<span>Tacos platter</span>
-					De-constructed tacos platter, masala kebab, crispy shrimp, spicy beef wrap, fish
-					bite tempura, pilaf, meaty black sauce, cherry, cucumber, efiri emulsion and
-					avocado
-				</p>
+<!-- About 1 - Bootstrap Brain Component -->
+<main>
+	<section class="py-3 py-md-5 py-xl-8">
+		<div class="container">
+		  <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+			<div class="col-12 col-lg-6 col-xl-5">
+			  <img class="img-fluid rounded" loading="lazy" src="/static/images/food2.png" alt="">
 			</div>
-			
-			<div class="menu__view--more">
-				<p>view menu details</p>
-				<div class="view__more--block"></div>
+			<div class="col-12 col-lg-6 col-xl-7">
+			  <div class="row justify-content-xl-center">
+				<div class="col-12 col-xl-11">
+				  <h2 class="h1 mb-2">Who Are We?</h2>
+				  <p class="lead fs-10 text-secondary mb-2">OSSE Dining offers exclusive private dining experiences, bringing its kitchen directly to clients' chosen locations for optimal comfort and convenience.</p>
+				  <p class="mb-2">OSSE Dining recognizes the cultural, traditional, and stylistic importance of food in everyone's lives, aiming to illuminate each individual's unique food narrative.</p>
+				  <p class="mb-5">The culinary team at OSSE is driven by a deep passion for excellence, crafting innovative recipes with dedication, affection, and extensive experience.</p>
+				  <div class="row gy-4 gy-md-0 gx-xxl-5X">
+					<div class="col-12 col-md-6">
+					  <div class="d-flex">
+						<div>
+						  <h4 class="mb-3">Our Magnificent Main Course</h4>
+						  <p class="text-secondary mb-0">At OSE Dining embodies exclusivity, cultural richness, and professional presentation. It's simple, tasteful, and elegant, with rich flavors that reflect our culinary excellence.</p>
+						</div>
+					  </div>
+					</div>
+					<div class="col-12 col-md-6">
+					  <div class="d-flex">
+						<div>
+						  <h4 class="mb-3">Dessert Glory</h4>
+						  <p class="text-secondary mb-0">Desserts, made with love and inspired by street snacks, heritage, and childhood tastes, offer memorable treats like banana cake bites, agbalumo syrup, kilishi gelato, and dankwa tuile.</p>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
 			</div>
+		  </div>
 		</div>
+	</section>
 
-		<div class="menu-content">
-			<div class="menu__content--about">
-				<h1>SNACK &amp; DIPS</h1>
-				<span>Menu 1</span>
-				<h3></h3>
-				<p>
-					<span>Chicken skewer</span>
-					Chicken on skewer crusted with herbs and cashew, served with oyster &amp; basil mayo.
-					<span>Tacos platter</span>
-					De-constructed tacos platter, masala kebab, crispy shrimp, spicy beef wrap, fish
-					bite tempura, pilaf, meaty black sauce, cherry, cucumber, efiri emulsion and
-					avocado
-				</p>
-			</div>
-			
-			<div class="menu__view--more">
-				<p>view menu details</p>
-				<div class="view__more--block"></div>
-			</div>
-		</div>
+	<div class="container">
+		Some Text
 	</div>
 </main>
 

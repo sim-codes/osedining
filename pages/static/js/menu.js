@@ -201,11 +201,10 @@ const header = `
     <div class="row" >
         <div class="col">
             <div class="receipt-header">
-                <h1>Ose Dining</h1>
+                <img src="https://i.ibb.co/7XrNgLm/ose-favicon.png" alt="Ose Logo" width="120px" style="{margin: 5px auto;}" class="logo text-center">
                 <ul class="list-unstyled">
-                    <li style="font-size: 20px; "> <b>Address :</b></li>
-                    <li>4 Olawaiye street off,</li>
-                    <li>Akinremi Anifowose Ikeja, Lagos</li>
+                    <li style="font-size: 20px; "><b>Contact:</b></li>
+                    <li>booking@osedining.com</li>
                     <li>+234 816 747 6771</li>
                 </ul>
             </div>

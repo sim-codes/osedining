@@ -1,0 +1,107 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Krona+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: "Krona One", sans-serif; */
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+}
+
+.hero-section {
+    /* margin: 0 3rem; */
+    color: #fff;
+    height: 80vh;
+    width: auto;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)), url('/static/images/hero-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.hero-section h1 {
+    font-size: 4em;
+    font-weight: 900;
+    line-height: 1;
+    margin-top: 8%;
+}
+
+.navbar-brand .logo {
+    width: 5rem;
+}
+
+.outline-design {
+    border: 1px solid #333;
+    padding: 1.5rem;
+    margin: 1rem;
+}
+
+.contact-ctn {
+    max-width: 50%;
+}
+
+.first-img {
+    background-image: url('/static/images/food3.png');
+}
+
+.second-img {
+    background-image: url('/static/images/food1.png');
+}
+
+.first-img, .second-img {
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+/* Zoom In #1 */
+.hover01 {
+    overflow: hidden;
+}
+
+.hover01 .second-img, .hover01 .first-img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+    
+}
+.hover01:hover .second-img, .hover01:hover .first-img  {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+@media only screen and (max-width: 600px) {
+    /* Add your CSS rules for phone screens here */
+    .hero-section {
+        height: 50vh;
+
+        h1 {
+            text-align: left;
+            font-size: 2em;
+        }
+
+        p {
+            line-height: 95%;
+            text-align: left;
+        }
+    }
+
+    .first-img, .second-img {
+        height: 30vh;
+    }
+}
