@@ -44,8 +44,8 @@
             <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
               <div class="card-body">
                 <div id="menu-target" class="m-2"></div>
-                <button id="cmd" type="button" class="btn btn-outline-dark m-2">Generate Invoice</button>
-                <a href="" class="btn btn-outline-dark m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reserve Now</a>           
+                <button id="cmd" type="button" class="btn btn-outline-dark bsb-btn-2xl">Generate Invoice</button>
+                <a href="" class="btn btn-outline-dark bsb-btn-2xl" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Reserve Now</a>           
                 <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
               </div>
             </div>
@@ -58,20 +58,19 @@
       <div class="modal-content">
         <form action="{% url 'pages:reserve' %}" method="post">
         <div class="modal-header">
-          <h1 class="modal-title" id="staticBackdropLabel">RESERVATIONS</h1>
+          <h1 class="modal-title display-5 mb-1 mb-md-3 text-center" id="staticBackdropLabel">RESERVATIONS</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
         
                 {% csrf_token %}
                 {{ form|bootstrap }}
-                
-            
+                <p class="m-3">If you have any alergies or special nedds, kindly specify them above.</p>            
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
           <div class="form-actions">
-            <button type="submit" class="btn btn-light mt-2 mb-2">Reserve</button>
+            <button type="submit" class="btn btn-outline-primary">Reserve</button>
         </div>
         </div>
     </form>

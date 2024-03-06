@@ -19,6 +19,7 @@ class BaseReservation(models.Model):
     email = models.EmailField(blank=True, null=True)
     date = models.DateField()
     time = models.TimeField()
+    location = models.CharField(max_length=255)
     additional_information = models.TextField(blank=True, null=True)
     date_send = models.DateTimeField(auto_now_add=True)
 
