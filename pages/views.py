@@ -1,7 +1,7 @@
 from typing import Any
 from django.shortcuts import reverse
 from django.views.generic import TemplateView, FormView
-from .forms import ContactForm, FineDiningForm
+from .forms import ContactForm, FineDiningForm, CustomDiningForm
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -28,6 +28,15 @@ class AboutView(TemplateView):
 class MenuView(TemplateView):
     template_name = 'pages/menu.html'
 
+class CustomDiningView(FormView):
+    form_class = CustomDiningForm
+    template_name = 'menus/special.html'
+
+    def get_success_url(self) -> str:
+        return reverse('pages:customdining-successful')
+
+class CustomDiningSuccessView(TemplateView):
+    template_name = 'menus/special_success.html'
 
 class FineDiningView(FormView):
     form_class = FineDiningForm
@@ -69,9 +78,6 @@ class ContactView(FormView):
             recipient_list=[settings.NOTIFY_EMAIL],
         )
         return super(ContactView, self).form_valid(form)
-
-
-
 
 
 def generate_pdf_function(data):

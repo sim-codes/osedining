@@ -1,6 +1,6 @@
 from django import forms
 from captcha.fields import CaptchaField
-from .models import Contact, FineReservation
+from .models import Contact, FineReservation, CustomDining
 
 class ContactForm(forms.ModelForm):
     captcha = CaptchaField()
@@ -9,10 +9,18 @@ class ContactForm(forms.ModelForm):
         exclude = ['date_send']
 
 
+class CustomDiningForm(forms.ModelForm):
+    date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
+    time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
+    class Meta:
+        model = CustomDining
+        fields = ['your_name', 'phone', 'email', 'date', 'time', 'location', 'menu_details']
+
+
 class FineDiningForm(forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
-    additional_information = forms.CharField(widget=forms.Textarea(attrs={'name':'body', 'rows':3, 'cols':5}))
+    additional_information = forms.CharField(widget=forms.Textarea(attrs={'name':'body', 'rows':3, 'cols':5, 'placeholder':'Kindly specify any alergies or special needs.'}))
     class Meta:
         model = FineReservation
         fields = ['menu_type', 'date', 'time','your_name', 'phone', 'email', 'location', 'number_of_guest', 

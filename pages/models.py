@@ -10,6 +10,19 @@ class Contact(models.Model):
         return self.subject
 
 
+class CustomDining(models.Model):
+    your_name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+    email = models.EmailField(blank=True, null=True)
+    date = models.DateField()
+    time = models.TimeField()
+    location = models.CharField(max_length=255)
+    menu_details = models.TextField(blank=True, null=True)
+    date_send = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.your_name
+
 class BaseReservation(models.Model):
     POLICIES = (
 

@@ -9,11 +9,11 @@
     <div class="container overflow-hidden">
       <div class="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
         <div class="col-12 col-lg-6 order-1 order-lg-0">
-          <h1 class="display-3 fw-bold mb-3 animate__animated animate__backInDown">EQUISITE &amp; DELICIOUS</h1>
-          <p class="fs-4 mb-3 animate__animated animate__backInDown animate__delay-1s">Our passion for exceptional food has inspired ingenious recipes, 
+          <h1 class="display-3 fw-bold mb-3">EQUISITE &amp; DELICIOUS</h1>
+          <p class="fs-4 mb-3">Our passion for exceptional food has inspired ingenious recipes, 
             crafted with dedication, care, and expertise. 
             OSE dining offers a platform for sharing and savoring stories through food.</p>
-          <div class="d-grid gap-2 d-sm-flex animate__animated animate__backInDown animate__delay-2s">
+          <div class="d-grid gap-2 d-sm-flex">
             <a href="{% url 'pages:contact' %}" class="btn btn-primary bsb-btn-3xl">Contact Us</a>
             <a href="{% url 'pages:finedining' %}" class="btn btn-outline-primary bsb-btn-3xl">Book Us</a>
           </div>
@@ -23,8 +23,7 @@
             <div class="bsb-circle border border-4 border-warning position-absolute top-50 start-10 translate-middle z-1"></div>
             <div class="bsb-circle bg-primary position-absolute top-50 start-50 translate-middle" style="--bsb-cs: 460px;"></div>
             <div class="bsb-circle border border-4 border-warning position-absolute top-10 end-0 z-1" style="--bsb-cs: 100px;"></div>
-            <!-- <img class="img-fluid position-relative z-2" loading="lazy" src="https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526670303qwiib.png" alt=""> -->
-            <img class="img-fluid position-relative z-2 food-animate" loading="lazy" src="{% static 'images/steak.png' %}" alt="" style="margin-top: 1rem;">
+            <img class="img-fluid position-relative z-2" loading="lazy" src="https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526670303qwiib.png" alt="">
           </div>
         </div>
       </div>
@@ -36,7 +35,7 @@
 
     <!-- Section - Services -->
     <!-- Service 6 - Bootstrap Brain Component -->
-    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1 animate__animated">
+    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-12 col-md-10 col-lg-8 col-xl-7">
@@ -49,7 +48,7 @@
 
       <div class="container overflow-hidden">
         <div class="row gy-2 gy-md-0 gx-xxl-3">
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-6">
             <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
               <div class="card-body">
                 <h3 class="h2 mb-2">Casual Dining</h3>
@@ -64,27 +63,12 @@
               </div>
             </div>
           </div>
-          <div class="col-12 col-md-4">
+          <div class="col-12 col-md-6">
             <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
               <div class="card-body">
                 <h3 class="h2 mb-2">Fine Dining</h3>
                 <p class="mb-2 text-secondary">Experience fine dining excellence with OSSE Dining. Our expertly crafted dishes and impeccable service ensure a memorable culinary journey. Book us now and savor the sophistication.</p>
                 <a href="{% url 'pages:finedining' %}" class="fw-bold text-decoration-none link-primary">
-                  Learn More
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
-                  </svg>
-                </a>
-                <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-4">
-            <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
-              <div class="card-body">
-                <h3 class="h2 mb-2">Your Dining</h3>
-                <p class="mb-2 text-secondary">We're delighted to offer personalized menu creation just for you. Whether you're drawn to specific spices, dishes, cultures, or tastes, we'll craft a menu that speaks to your culinary desires.</p>
-                <a href="{% url 'pages:customdining' %}" class="fw-bold text-decoration-none link-primary">
                   Learn More
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
@@ -100,12 +84,12 @@
   
       <!-- Section - About -->
       <!-- Process 1 - Bootstrap Brain Component -->
-      <section id="scrollspyAbout" class="py-5 py-xl-8 bsb-section-py-xxl-1 bsb-tpl-bg-alabaster animate__animated">
+      <section id="scrollspyAbout" class="py-5 py-xl-8 bsb-section-py-xxl-1 bsb-tpl-bg-alabaster">
         <div class="container">
           <div class="row justify-content-md-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-7">
               <h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">Who Are We?</h3>
-              <h2 class="display-5 mb-2 mb-md-3 text-center text-white">We offer bespoke private dining experiences, bringing our kitchen to your comfort zones.</h2>
+              <h2 class="display-5 mb-2 mb-md-3 text-center">We offer bespoke private dining experiences, bringing our kitchen to your comfort zones.</h2>
               <hr class="w-50 mx-auto mb-1 mb-xl-3 border-dark-subtle">
             </div>
           </div>
@@ -127,16 +111,16 @@
                         <div class="col-12 col-md-6">
                           <div class="d-flex">
                             <div>
-                              <h4 class="mb-3 text-secondary">Our Magnificent Main Course</h4>
-                              <p class="mb-0">At OSE Dining embodies exclusivity, cultural richness, and professional presentation. It's simple, tasteful, and elegant, with rich flavors that reflect our culinary excellence.</p>
+                              <h4 class="mb-3">Our Magnificent Main Course</h4>
+                              <p class="text-secondary mb-0">At OSE Dining embodies exclusivity, cultural richness, and professional presentation. It's simple, tasteful, and elegant, with rich flavors that reflect our culinary excellence.</p>
                             </div>
                           </div>
                         </div>
                         <div class="col-12 col-md-6">
                           <div class="d-flex">
                             <div>
-                              <h4 class="mb-3 text-secondary">Dessert Glory</h4>
-                              <p class="mb-0">Desserts, made with love and inspired by street snacks, heritage, and childhood tastes, offer memorable treats like banana cake bites, agbalumo syrup, kilishi gelato, and dankwa tuile.</p>
+                              <h4 class="mb-3">Dessert Glory</h4>
+                              <p class="text-secondary mb-0">Desserts, made with love and inspired by street snacks, heritage, and childhood tastes, offer memorable treats like banana cake bites, agbalumo syrup, kilishi gelato, and dankwa tuile.</p>
                             </div>
                           </div>
                         </div>
