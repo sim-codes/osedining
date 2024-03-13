@@ -20,24 +20,31 @@
           <li class="nav-item">
             <a class="nav-link active" href="#scrollspyNav" aria-current="page" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#scrollspyServices" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#scrollspyAbout" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">About</a>
-          </li>
+          </li> -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Our Menu
+              Dinings
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'pages:finedining' %}">Fine Dining</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Casual Dining</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'pages:customdining' %}">Custom Dining</a></li>
             </ul>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:gallery' %}">Gallery</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'pages:contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-light bsb-btn-2xl" href="{% url 'pages:contact' %}">Hire A Chef</a>
           </li>
         </ul>
       </div>

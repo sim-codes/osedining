@@ -50,7 +50,7 @@
 
 /* body and background */
 .bsb-tpl-bg-alabaster{
-    background:#171717;
+    background:#000;
 
     p, h1, h3 {
         color: #fff;
@@ -82,8 +82,11 @@
     }
 
     .bsb-tpl-bg-alabaster{
-       a {
+       .nav-link {
             color: #fff;
+        }
+        .nav-link:hover {
+            color: #198754;
         }
     }
 }

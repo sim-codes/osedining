@@ -1,0 +1,46 @@
+main .container {
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+main .card {
+  color: #252a32;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.24);
+}
+main .card-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 70%;
+  background: #fff;
+  overflow: hidden;
+}
+main .card-image img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* onHover image will expand little bit */
+img:hover {
+  transform: scale(1.1);
+  cursor: zoom-in;
+}
+
+@media only screen and (max-width: 600px) {
+  main .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+ }
+}

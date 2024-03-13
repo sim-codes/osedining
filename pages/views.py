@@ -13,6 +13,10 @@ from django.http import HttpRequest, HttpResponse
 
 class HomePageView(TemplateView):
     template_name = 'pages/home.html'
+
+
+class GalleryPageView(TemplateView):
+    template_name = 'pages/gallery.html'
     
 
 class SuccessView(TemplateView):

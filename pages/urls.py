@@ -9,6 +9,7 @@ urlpatterns = [
     path('success/', views.SuccessView.as_view(), name='success'),
     path('about', views.AboutView.as_view(), name='about'),
     path('menu', views.MenuView.as_view(), name='menu'),
+    path('gallery', views.GalleryPageView.as_view(), name='gallery'),
     path('finedining/', views.FineDiningView.as_view(), name='finedining'),
     path('custom-dining/', views.CustomDiningView.as_view(), name='customdining'),
     path('custom-dining/successful', views.CustomDiningSuccessView.as_view(), name='customdining-successful'),
