@@ -1,7 +1,11 @@
 from typing import Any
 from django.shortcuts import reverse
 from django.views.generic import TemplateView, FormView
-from .forms import ContactForm, FineDiningForm, CustomDiningForm
+from .forms import (ContactForm, 
+                    FineDiningForm, 
+                    CustomDiningForm, 
+                    CasualDiningForm,
+                    HireForm)
 from django.core.mail import send_mail
 from django.conf import settings
 
@@ -22,8 +26,8 @@ class GalleryPageView(TemplateView):
 class SuccessView(TemplateView):
     template_name = 'pages/success.html'
 
-class ReservationSuccessful(TemplateView):
-    template_name = 'menus/reservation_success.html'
+class FineDiningSuccessful(TemplateView):
+    template_name = 'menus/finedining_success.html'
 
 class AboutView(TemplateView):
     template_name = 'pages/about.html'
@@ -32,13 +36,33 @@ class AboutView(TemplateView):
 class MenuView(TemplateView):
     template_name = 'pages/menu.html'
 
+
+class HireAChefSuccessfulView(TemplateView):
+    template_name = 'pages/hire-successful.html'
+
+class HireAChefView(FormView):
+    form_class = HireForm
+    template_name = 'pages/hire-a-chef.html'
+
+    def post(self, request, *args, **kwargsy):
+        if request.method == 'POST':
+            form = HireForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('pages:hire_a_chef_success')
+
+
 class CustomDiningView(FormView):
     form_class = CustomDiningForm
     template_name = 'menus/special.html'
 
-    def get_success_url(self) -> str:
-        return reverse('pages:customdining-successful')
-
+    def post(self, request, *args, **kwargsy):
+        if request.method == 'POST':
+            form = CustomDiningForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('pages:customdining-successful')
+            
 class CustomDiningSuccessView(TemplateView):
     template_name = 'menus/special_success.html'
 
@@ -46,16 +70,24 @@ class FineDiningView(FormView):
     form_class = FineDiningForm
     template_name = 'menus/finedining.html'
 
-def make_reservation(request):
-    if request.method == 'POST':
-        form = FineDiningForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('pages:reserve_success')
-    else:
-        form = FineDiningForm()
-    return render(request, 'menus/finedining.html', {'form': form})
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = FineDiningForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('pages:finedining_success')
+            
 
+class CasualDiningView(FormView):
+    form_class = CasualDiningForm
+    template_name = 'menus/casualdining.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = CasualDiningForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('pages:finedining_success')
 
 class ContactView(FormView):
     form_class = ContactForm

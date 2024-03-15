@@ -3,7 +3,7 @@
 <nav id="scrollspyNav" class="navbar navbar-expand-lg bsb-tpl-bg-alabaster bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky" data-bsb-sticky-target="#header">
   <div class="container">
     <a class="navbar-brand" href="{% url 'pages:home' %}">
-      <img src="{% static 'images/ose-logo.png' %}" class="bsb-tpl-logo" alt="">
+      <img src="{% static 'images/white-logo.png' %}" class="bsb-tpl-logo" alt="">
     </a>
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -18,7 +18,7 @@
       <div class="offcanvas-body">
         <ul id="bsb-tpl-navbar" class="navbar-nav justify-content-end flex-grow-1">
           <li class="nav-item">
-            <a class="nav-link active" href="#scrollspyNav" aria-current="page" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Home</a>
+            <a class="nav-link active" href="{% url 'pages:home' %}" aria-current="page">Home</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#scrollspyServices" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">Services</a>
@@ -32,7 +32,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'pages:finedining' %}">Fine Dining</a></li>
-              <li><a class="dropdown-item" href="#">Casual Dining</a></li>
+              <li><a class="dropdown-item" href="{% url 'pages:casual_dining_success' %}">Casual Dining</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'pages:customdining' %}">Custom Dining</a></li>
             </ul>
@@ -44,7 +44,7 @@
             <a class="nav-link" href="{% url 'pages:contact' %}">Contact</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-outline-light bsb-btn-2xl" href="{% url 'pages:contact' %}">Hire A Chef</a>
+            <a class="btn btn-outline-light bsb-btn-2xl" href="{% url 'pages:hire_a_chef' %}">Hire A Chef</a>
           </li>
         </ul>
       </div>

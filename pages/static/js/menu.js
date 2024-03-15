@@ -200,8 +200,8 @@ menuSelected.addEventListener('change', (e) => {
 const header = `
     <div class="row" >
         <div class="col">
-            <div class="receipt-header">
-                <img src="https://i.ibb.co/7XrNgLm/ose-favicon.png" alt="Ose Logo" width="120px" style="{margin: 5px auto;}" class="logo text-center">
+            <div>
+                <img src="https://i.ibb.co/Kxcr0bY/black-logo.png" alt="Ose Logo" width="120px" style="{margin: 5px;}" class="logo text-center">
                 <ul class="list-unstyled">
                     <li style="font-size: 20px; "><b>Contact:</b></li>
                     <li>booking@osedining.com</li>
@@ -209,7 +209,6 @@ const header = `
                 </ul>
             </div>
 
-            
             <div class="text-center">
             <h3>Fine Dining</h3>
             <p>Menu is designed for a minimum of 10 (ten) guests</p>
