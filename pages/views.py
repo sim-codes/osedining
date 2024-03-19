@@ -40,6 +40,9 @@ class MenuView(TemplateView):
 class HireAChefSuccessfulView(TemplateView):
     template_name = 'pages/hire-successful.html'
 
+class CasualDiningSuccessfulView(TemplateView):
+    template_name = 'menus/casual_successful.html'
+
 class HireAChefView(FormView):
     form_class = HireForm
     template_name = 'pages/hire-a-chef.html'
@@ -87,7 +90,7 @@ class CasualDiningView(FormView):
             form = CasualDiningForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('pages:finedining_success')
+                return redirect('pages:casual_successful')
 
 class ContactView(FormView):
     form_class = ContactForm

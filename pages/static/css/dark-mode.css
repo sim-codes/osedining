@@ -82,9 +82,6 @@
     }
 
     .bsb-tpl-bg-alabaster{
-       .nav-link {
-            color: #fff;
-        }
         .nav-link:hover {
             color: #198754;
         }

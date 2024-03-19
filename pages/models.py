@@ -92,6 +92,15 @@ class FineDining(BaseDining):
 
 
 class CasualDining(BaseDining):
+    BREAD = (
+        ('F', 'Focaccia'),
+        ('C', 'Ciabatta'),
+        ('S', 'Sourdough'),
+        ('H', 'Herbal bun'),
+        ('G', 'Garlic bread'),
+        ('CH', 'Challah'),
+    )
+
     GUEST_NUMBER = (
         ('8', '8 or less'),
         ('15', '15 or less'),
@@ -129,6 +138,7 @@ class CasualDining(BaseDining):
 
     number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default='8')
     menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
+    bread = models.CharField(max_length=2, choices=BREAD, default='F')
     side_one = models.CharField(max_length=3, choices=SIDES, default='BMP')
     side_two = models.CharField(max_length=3, choices=SIDES, default='CGP')
 

@@ -136,8 +136,11 @@ function htmlData4Course(menu) {
 }
 
 
+
 menuSelected.addEventListener('change', (e) => {
     const selected = e.target.value;
+    console.log(selected);
+    document.getElementById('id_menu_type').value = selected;
 
     if (selected.endsWith('1')) {
         menuTarget.innerHTML = htmlData3Course(menu1);

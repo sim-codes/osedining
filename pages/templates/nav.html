@@ -1,6 +1,7 @@
 {% load static %}
 <!-- Navbar 1 - Bootstrap Brain Component -->
-<nav id="scrollspyNav" class="navbar navbar-expand-lg bsb-tpl-bg-alabaster bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky" data-bsb-sticky-target="#header">
+<nav id="scrollspyNav" class="navbar navbar-expand-lg bg-dark bg-black bsb-navbar bsb-navbar-hover bsb-navbar-caret bsb-tpl-navbar-sticky" 
+data-bsb-sticky-target="#header" data-bs-theme="dark">
   <div class="container">
     <a class="navbar-brand" href="{% url 'pages:home' %}">
       <img src="{% static 'images/white-logo.png' %}" class="bsb-tpl-logo" alt="">
@@ -32,7 +33,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'pages:finedining' %}">Fine Dining</a></li>
-              <li><a class="dropdown-item" href="{% url 'pages:casual_dining_success' %}">Casual Dining</a></li>
+              <li><a class="dropdown-item" href="{% url 'pages:casual_dining' %}">Casual Dining</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'pages:customdining' %}">Custom Dining</a></li>
             </ul>
