@@ -193,11 +193,12 @@ menuSelected.addEventListener('change', (e) => {
             </table>
         `
     }
-    else {
-        menuTarget.innerHTML = '';
-    }
 
 });
+
+window.onload = () => {
+    menuTarget.innerHTML = htmlData3Course(menu1);
+}
 
 
 const header = `
