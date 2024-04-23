@@ -19,12 +19,12 @@ const menu1 = {
     smackAndDip: [
         'Chicken skewer: Chicken on skewer crusted with herbs and cashew, served with oyster & basil mayo.',
     'Tacos platter: De-constructed tacos platter, masala kebab, crispy shrimp, spicy beef wrap, fish bite tempura, pilaf, meaty black sauce, cherry, cucumber, efiri emulsion and avocado'],
-    soup: ['Smoked Croaker fish pepper soup', 'Chili Butternut squash soup'],
+    soup: ['Smoked Croaker fish pepper soup', 'Chicken corn soup'],
     appetizer: ['Fish Tempura: Spicy fresh catch fish of the day fried in a light & crispy batter served with chef sauce',
-    'Seafood Ewa Agoyin Balls: Prawn, beans, black sauce, cream, bread, spice, coriander'],
+    'Sticky Bourbon Chicken Taco: Sticky charcoal grilled chicken, avocado, stuffed in taco bread served with coriander and chili dip.'],
     salad: 'Loaded Prawns Kilishi Caesar Salad: Eggs, baby cos lettuce, prawn, anchovy, kilishi,  pancetta focaccia , parsley, parmesan Caesar dressing',
     main: ['Coconut grilled chicken roulade: 48 hours marinate chicken, spinach mushroom, chili mushroom sauce, coriander emulsion, coconut syrup.',
-    'Braised Lamb shank: Braised lamb shank, red wine gravy, leek rosemary puree', 'Beef short ribs, carrot texture, rosemary jus'],
+    'Braised Lamb shank: Braised lamb shank, red wine gravy, leek rosemary puree, Beef short ribs, carrot texture, rosemary jus'],
     desert: ['Coffee Caramel dark chocolate tart',
     'Creamy dark chocolate ganache', 'Nutty ice cream', 'Plantain Crumbs'],
     bread: ['Focaccia', 'Sourdough', 'Garlic bread', 'Challah'],
@@ -33,30 +33,30 @@ const menu1 = {
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '900,000'
+    price: '950,000'
 
 }
 
 const menu2 = {
     menuNo: 'Menu 2',
     smackAndDip: [
-        'Lamb kebab:Diced Lamb on skewer crusted with herbs cheese and pine nut, served with smoked oyster & basil mayo.',
+        'Lamb kebab: Diced Lamb on skewer crusted with herbs cheese and pine nut, served with smoked oyster & basil mayo.',
     'Chefs platter: De-constructed tacos platter, masala kebab, crispy shrimp, spicy beef wrap, fish bite tempura, pilaf, meaty black sauce, cherry, cucumber, efiri emulsion and avocado.'],
-    soup: ['Charcoal Goat meat pepper soup', 'Tomatoes beans soup'],
-    appetizer: ['Garri Prawn Crispy: Spicy garri crispy PRAWN butterball coated & deep fry prawn & crunchy onion served with hoi sin mayo paprika sauce',
-    'Mini Beef Sliders: Classic version of OSE masterpiece mini burger, caramelized onion, goat cheese, roasted parmesan cream served with assorted fries, two dip'],
-    salad: 'Char Grilled Chicken Watercress Salad: Chicken fillet, watercress, avocado, quail egg, cherry, Smokey ham, onion, goat cheese, cranberry dressing.',
-    main: ['Char grilled ugba whole Red snapper: Grilled full red snapper, celeriac truffle sauce, ugba salsa Verde, OSE pepper sauce',
-    'Ose stuff smoked chicken roast: Five spice char chicken with OSE BBQ sauce served coconut curry sauce, stuffed with jollof rice',
+    soup: ['Charcoal Goat meat pepper soup', 'Seafood butternut sqaush soup'],
+    appetizer: ['Prawn Crispy: Spicy garri crispy PRAWN butterball coated & deep fry prawn & crunchy onion served with hoi sin mayo paprika sauce',
+    'Beef Sliders: Classic version of OSE masterpiece mini burger, caramelized onion, goat cheese, roasted parmesan cream served with assorted fries, two dip'],
+    salad: 'Char Grilled Chicken Salad: Chicken fillet, avocado, quail egg, cherry, Smokey ham, onion, goat cheese, cranberry dressing.',
+    main: ['Char Grilled Red Snapper: Grilled full red snapper, celeriac truffle sauce, ugba salsa Verde, OSE pepper sauce',
+    'Ose char chicken roast: Five spice char chicken with OSE BBQ sauce served coconut curry sauce',
     'Beef Goulash: Beef, potatoes, vegetable'],
-    desert: ['Hibiscus cheesecake', 'Hibiscus custard', 'Smoked strawberry oat dust', 'Tuile', 'Homemade uyayak gelato'],
+    desert: ['Hibiscus cheesecake, Hibiscus custard, Smoked strawberry oat dust, Tuile, Homemade uyayak gelato', 'A 200ml bowl of gelato', 'Zobo syrup'],
     bread: ['Focaccia', 'Sourdough', 'Garlic bread', 'Challah'],
     sides: ['Buttering mashed potatoes', 'Cheesy garlic roasted butter potatoes',
     'Potatoes fondant', 'Creamy baby potatoes', 'OSE special fried rice', 'Spaghetti stir fry', 
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '2,000,000'
+    price: '1,200,000'
 
 }
 
@@ -124,6 +124,7 @@ function htmlData4Menu(menu) {
     });
     data += `</ul>
     <p><span class="fw-bold">Price:</span> ₦${menu.price}</p>
+    <p><span class="fw-bold">20% Service Charge</p>
     `;
 
     return data;

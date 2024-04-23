@@ -87,7 +87,8 @@ class FineDining(BaseDining):
         ('M7', 'Menu 7'),
     )
 
-    number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default=10)
+    # number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default=10)
+    number_of_guest = models.IntegerField(default=10)
     menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
 
 

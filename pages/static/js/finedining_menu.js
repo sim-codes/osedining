@@ -8,16 +8,16 @@ const menu1 = {
     firstcourse: 'Buffalo wings, seafood spring roll, spicy chicken wrap, grilled spicy prawn, Hot goat pepper soup, pepper sauce',
     secondcourse: 'Confit chicken, Linguine crème ata din din',
     thirdcourse: 'Red velvet cake, coffee chocolate mousse, hibiscus coulis, coffee gelato, agbalumo crack tuile',
-    price: '600,000'
+    price: '50,000 per guest'
 };
 
 const menu2 = {
     name: 'Menu 2',
     menuNo: '3 Course Meal',
-    firstcourse: 'Spicy butternut soup , kilichi  rice crisp  prawn ,leek sprout , garlic butter sourdough',
+    firstcourse: 'Spicy butternut soup , kilishi  rice crisp  prawn, leek sprout, garlic butter sourdough',
     secondcourse: 'Pan Seared croaker, Seafood jambalaya , smoked pepper sauce, kelewele, parsley emulsion',
-    thirdcourse: 'Apple crumble , iru gelato ,butter kokoro crumbs ,white chocolate ganache',
-    price: '600,000'
+    thirdcourse: 'Apple crumble, iru gelato, butter kokoro crumbs, white chocolate ganache',
+    price: '50,000 per guest'
 };
 
 const menu3 = {
@@ -27,7 +27,7 @@ const menu3 = {
     secondcourse: 'Confit duck, coriander butternut squash puree, Agor reduction, roasted mix vegetable',
     thirdcourse: 'Pan seared red snapper, carrot texture, leek truffle cream, parsley emulsion, mixed vegetable.',
     fourthcourse: 'Dark Elubo cake, Egusi mousse, vanilla gelato, garri tuile',
-    price: '840,000'
+    price: '60,000 per guest'
 };
 
 const menu4 = {
@@ -37,7 +37,7 @@ const menu4 = {
     secondcourse: 'Confit chicken roulade, risotto ata din din',
     thirdcourse: 'Char grilled Brine steak, smoked potatoes mash, roasted carrot, base carrot texture, agor demi-glace',
     fourthcourse: 'Blueberries brownies slice, chocolate caramel drop, chili gelato, dudu crumbs, Odunku tuile',
-    price: '840,000'
+    price: '65,000 per guest'
 };
 
 const menu5 = {
@@ -47,7 +47,7 @@ const menu5 = {
     secondcourse: 'Sugarcane glazed halibut, bok choy, sake butter sauce, banga cream',
     thirdcourse: 'Odo Filet steak, duck fat potatoes, avocado liver mousse, demi-glace, smoke efo riro',
     fourthcourse: 'Deconstructed mango meringue parfait, gbegiri rosemary jelly, lemon cream, TTG crumbs',
-    price: '1,200,000'
+    price: '85,000 per guest'
 };
 
 const menu6 = {
@@ -57,7 +57,7 @@ const menu6 = {
     secondcourse: 'Chicken mushroom roulade, sweet potatoes mash, braised radicchio, leek cream, Supreme sauce',
     thirdcourse: 'Roast Lamb rack, rosemary jus, beans cream sauce, mixed roasted vegetables',
     fourthcourse: 'Black Deconstructed dankwa cheese cake, mango gelato, mixed berry compote, chili mango tuile',
-    price: '1,020,000'
+    price: '85,000 per guest'
 };
 
 
@@ -66,7 +66,6 @@ function MenuToForm(menu) {
     for (const [key, value] of Object.entries(menu)) {
         data += `<input type="hidden" name="${key}" value="${value}">`
     }
-    console.log(data);
     return data;  
 }
 
@@ -178,7 +177,7 @@ menuSelected.addEventListener('change', (e) => {
                 <tr>
                     <th scope="row">4</th>
                     <td>Fourth Course</td>
-                    <td>Odo steak roast, butternut cream texture , squash terrine, date demi-glace, potatoes fondant</td>
+                    <td>Odo steak roast, butternut cream texture, squash terrine, date demi-glace, potatoes fondant</td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
@@ -187,7 +186,7 @@ menuSelected.addEventListener('change', (e) => {
                 </tr>
                 <tr>
                     <th scope="row">Price</th>
-                    <td colspan="2">₦1,440,000</td>
+                    <td colspan="2">₦120,000 per guest</td>
                 </tr>
             </tbody>
             </table>

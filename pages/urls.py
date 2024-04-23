@@ -18,7 +18,5 @@ urlpatterns = [
     path('finedining/successful/', views.FineDiningSuccessful.as_view(), name='finedining_success'),
     path('casual-dining/', views.CasualDiningView.as_view(), name='casual_dining'),
     path('casual-dining/successful/', views.CasualDiningSuccessfulView.as_view(), name='casual_dining_success'),
-    # path('reserve/', views.make_reservation, name='reserve'),
-    path('pdf/', views.generate_pdf, name='generate_pdf'),
-    path('menu-pdf/', views.convert_to_pdf, name='menu_pdf'),
+    # path('reserve/', views.make_reservation, name='reserve')
 ]
