@@ -91,6 +91,7 @@ if DEVELOPMENT_MODE is True:
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
     # if os.getenv("DATABASE_URL", None) is None:
     #     raise Exception("DATABASE_URL environment variable not defined")
+    print(env('USER'))
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
