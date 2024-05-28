@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'captcha',
     'bootstrapform',
+    'letsencrypt',
 ]
 
 MIDDLEWARE = [
