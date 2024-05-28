@@ -172,7 +172,7 @@ menuSelected.addEventListener('change', (e) => {
                 <tr>
                     <th scope="row">3</th>
                     <td>Third Course</td>
-                    <td>Roasted chicken, quail breast, carrot emulsion, roasted red cabbage, leek veloute</td>
+                    <td>Roasted chicken, quail breast, carrot emulsion, roasted red cabbage, pea veloute</td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
@@ -222,7 +222,7 @@ const header = `
 
 const footer = `
 <br><br>
-<p>All payment should be made in favour of:</p>
+<p>All payment should be made with <strong>20% service charge</strong> in favour of:</p>
 <ul class="list-unstyled">
     <li>Account Name:</li>
     <li style="font-size: 20px; "><b>Ehis Foods</b></li>

@@ -38,8 +38,8 @@ class Hire(BaseRequest):
     def __str__(self):
         return f'Hire request by {self.your_name}'
 
-class CustomDining(BaseRequest):
-    menu_details = models.TextField(blank=True, null=True)
+class CustomisedDining(BaseRequest):
+    service_details = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f'Custom menu request by {self.your_name}'
@@ -54,6 +54,7 @@ class BaseDining(models.Model):
     date = models.DateField()
     time = models.TimeField()
     location = models.CharField(max_length=255)
+    number_of_guest = models.IntegerField(default=10)
     additional_information = models.TextField(blank=True, null=True)
     date_send = models.DateTimeField(auto_now_add=True)
 
@@ -88,7 +89,6 @@ class FineDining(BaseDining):
     )
 
     # number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default=10)
-    number_of_guest = models.IntegerField(default=10)
     menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
 
 
@@ -137,7 +137,7 @@ class CasualDining(BaseDining):
         ('AB', 'Assorted bread'),
     )
 
-    number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default='8')
+    # number_of_guest = models.CharField(max_length=2, choices=GUEST_NUMBER, default='8')
     menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
     bread = models.CharField(max_length=2, choices=BREAD, default='F')
     side_one = models.CharField(max_length=3, choices=SIDES, default='BMP')

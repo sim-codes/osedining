@@ -1,0 +1,162 @@
+
+<div class="">
+    <div class="modal-body">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_menu_type">Menu type</label>
+            <div class=" ">
+                <select name="menu_type" class=" form-control" id="id_menu_type">
+                    <option value="M1" selected="">Menu 1</option>
+                    <option value="M2">Menu 2</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_date">Date</label>
+            <div class=" ">
+                <input type="date" name="date" class=" form-control" required="" id="id_date">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_time">Time</label>
+            <div class=" ">
+                <input type="time" name="time" class=" form-control" required="" id="id_time">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_your_name">Your name</label>
+            <input type="text" name="your_name" maxlength="255" class=" form-control" required="" id="id_your_name">
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_phone">Phone</label>
+            <input type="text" name="phone" maxlength="255" class=" form-control" required="" id="id_phone">
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_email">Email</label>
+            <input type="email" name="email" maxlength="254" class=" form-control" id="id_email">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  " for="id_location">Location</label>
+            <input type="text" name="location" maxlength="255" class=" form-control" required="" id="id_location">
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  " for="id_number_of_guest">Number of guest</label>
+    
+            <select name="number_of_guest" class=" form-control" id="id_number_of_guest">
+                <option value="8" selected="">8 or less</option>
+                <option value="15">15 or less</option>
+                <option value="20">20 or less</option>
+                <option value="30">30 or less</option>
+                <option value="40">40 or more</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_bread">Bread</label>
+    
+            <select name="bread" class=" form-control" id="id_bread">
+                <option value="F" selected="">Focaccia</option>
+                <option value="C">Ciabatta</option>
+                <option value="S">Sourdough</option>
+                <option value="H">Herbal bun</option>
+                <option value="G">Garlic bread</option>
+                <option value="CH">Challah</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_side_one">Side one</label>
+    
+            <select name="side_one" class=" form-control" id="id_side_one">
+                <option value="BMP" selected="">Buttering mashed potatoes</option>
+                <option value="CGP">Cheesy garlic roasted butter potatoes</option>
+                <option value="PF">Potatoes fondant</option>
+                <option value="CBP">Creamy baby potatoes</option>
+                <option value="SPR">OSE special fried rice</option>
+                <option value="SSF">Spaghetti stir fry</option>
+                <option value="CJ">Coriander jasmine</option>
+                <option value="SAJ">Smoked asun jollof </option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_side_two">Side two</label>
+    
+            <select name="side_two" class=" form-control" id="id_side_two">
+                <option value="BMP">Buttering mashed potatoes</option>
+                <option value="CGP" selected="">Cheesy garlic roasted butter potatoes</option>
+                <option value="PF">Potatoes fondant</option>
+                <option value="CBP">Creamy baby potatoes</option>
+                <option value="SPR">OSE special fried rice</option>
+                <option value="SSF">Spaghetti stir fry</option>
+                <option value="CJ">Coriander jasmine</option>
+                <option value="SAJ">Smoked asun jollof </option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_vegetable_one">Vegetable one</label>
+    
+            <select name="vegetable_one" class=" form-control" id="id_vegetable_one">
+                <option value="RC" selected="">Roasted carrot</option>
+                <option value="BT">Broccoli tempura</option>
+                <option value="SM">Sautéed mushroom</option>
+                <option value="PO">Pickled onion</option>
+                <option value="MP">Mixed bell pepper</option>
+                <option value="SS">Sautéed spinach</option>
+                <option value="AB">Assorted bread</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_vegetable_two">Vegetable two</label>
+            
+            <select name="vegetable_two" class=" form-control" id="id_vegetable_two">
+                <option value="RC">Roasted carrot</option>
+                <option value="BT" selected="">Broccoli tempura</option>
+                <option value="SM">Sautéed mushroom</option>
+                <option value="PO">Pickled onion</option>
+                <option value="MP">Mixed bell pepper</option>
+                <option value="SS">Sautéed spinach</option>
+                <option value="AB">Assorted bread</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="we_are_allowed_to_take_pictures_of_you_and_your_guest" id="id_we_are_allowed_to_take_pictures_of_you_and_your_guest" checked=""> <span>We are allowed to take pictures of you and your guest</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="we_are_allowed_to_take_pictures_of_your_apartment" id="id_we_are_allowed_to_take_pictures_of_your_apartment" checked=""> <span>We are allowed to take pictures of your apartment</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="we_are_allowed_to_use_your_event_content_for_our_business_promotions" id="id_we_are_allowed_to_use_your_event_content_for_our_business_promotions" checked=""> <span>We are allowed to use your event content for our business promotions</span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label  " for="id_additional_information">Additional information</label>
+            <textarea name="additional_information" cols="5" rows="3" placeholder="Kindly specify any alergies or special needs." class=" form-control" required="" id="id_additional_information"></textarea>
+        </div>
+    </div>
+</div>

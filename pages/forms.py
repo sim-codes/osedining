@@ -3,7 +3,7 @@ from captcha.fields import CaptchaField
 from .models import (Contact,
                      FineDining,
                      CasualDining,
-                     CustomDining,
+                     CustomisedDining,
                      Hire)
 
 class ContactForm(forms.ModelForm):
@@ -17,8 +17,8 @@ class CustomDiningForm(forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
     class Meta:
-        model = CustomDining
-        fields = ['your_name', 'phone', 'email', 'date', 'time', 'location', 'menu_details']
+        model = CustomisedDining
+        fields = ['your_name', 'phone', 'email', 'date', 'time', 'location', 'service_details']
 
 
 class FineDiningForm(forms.ModelForm):

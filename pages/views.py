@@ -10,8 +10,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from django.shortcuts import render, redirect
-from io import BytesIO
-from django.http import HttpRequest, HttpResponse
 
 
 class HomePageView(TemplateView):
