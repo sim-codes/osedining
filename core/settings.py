@@ -97,7 +97,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
             'USER': env('USER'),
             'PASSWORD': env('PASSWORD'),
             'HOST': 'localhost',
-            'PORT': '',
+            'PORT': '5432',
             }
     }
 
