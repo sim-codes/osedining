@@ -58,9 +58,9 @@ class BaseDining(models.Model):
     additional_information = models.TextField(blank=True, null=True)
     date_send = models.DateTimeField(auto_now_add=True)
 
-    we_are_allowed_to_take_pictures_of_you_and_your_guest = models.BooleanField(default=True)
-    we_are_allowed_to_take_pictures_of_your_apartment = models.BooleanField(default=True)
-    we_are_allowed_to_use_your_event_content_for_our_business_promotions = models.BooleanField(default=True)
+    we_are_allowed_to_take_pictures_of_you_and_your_guest = models.BooleanField(default=True, db_column="picture_consent")
+    we_are_allowed_to_take_pictures_of_your_apartment = models.BooleanField(default=True, db_column="apartment_consent")
+    we_are_allowed_to_use_your_event_content_for_our_business_promotions = models.BooleanField(default=True, db_column="content_consent")
 
     class Meta:
         abstract = True
