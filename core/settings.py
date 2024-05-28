@@ -96,7 +96,7 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': env('NAME'),
-            'USER': os.getenv('USER'),
+            'USER': os.getenv('DB_USER'),
             'PASSWORD': env('PASSWORD'),
             'HOST': 'localhost',
             'PORT': '',
