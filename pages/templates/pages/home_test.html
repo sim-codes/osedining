@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block title %}Ose Dinning - Home{% endblock %}
+
+{% block content %}
+<!-- Hero 3 - Bootstrap Brain Component -->
+<section id="scrollspyHero" class="bg-black text-white pt-2 pb-5 p-lg-0">
+    <div class="container overflow-hidden">
+      <div class="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
+        <div class="col-12 col-lg-6 order-1 order-lg-0">
+          <h1 class="display-3 fw-bold mb-3 animate__animated animate__backInDown">EQUISITE &amp; DELICIOUS</h1>
+          <p class="fs-4 mb-3 animate__animated animate__backInDown animate__delay-1s">Our passion for exceptional food has inspired ingenious recipes, 
+            crafted with dedication, care, and expertise. 
+            OSE dining would offer you an experience which enables you to share and savor stories through food.</p>
+          <div class="d-grid gap-2 d-sm-flex animate__animated animate__backInDown animate__delay-2s">
+            <a href="{% url 'pages:contact' %}" class="btn btn-warning bsb-btn-3xl btn-lg">Drop a message</a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5 text-center">
+          <div class="position-relative">
+            <div class="bsb-circle border border-4 border-warning position-absolute top-50 start-10 translate-middle z-1"></div>
+            <div class="bsb-circle bg-primary position-absolute top-50 start-50 translate-middle" style="--bsb-cs: 460px;"></div>
+            <div class="bsb-circle border border-4 border-warning position-absolute top-10 end-0 z-1" style="--bsb-cs: 100px;"></div>
+            <img class="img-fluid position-relative z-2" loading="lazy" src="https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526670303qwiib.png" alt="">
+            <!-- <img class="img-fluid position-relative z-2 food-animate rounded-circle" loading="lazy" src="{% static 'images//works/desert1.webp' %}" alt="" style="margin-top: 2rem;"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Main -->
+<main id="main">
+
+    <!-- Section - Services -->
+    <!-- Service 6 - Bootstrap Brain Component -->
+    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1 animate__animated">
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+            <h3 class="fs-6 mb-2 text-secondary text-center text-uppercase">What We Do?</h3>
+            <h2 class="display-5 mb-1 mb-md-3 text-center">We offers exclusive dining experiences in your home.</h2>
+            <hr class="w-50 mx-auto mb-2 mb-xl-5 border-dark-subtle">
+          </div>
+        </div>
+      </div>
+
+      <div class="container overflow-hidden">
+        <div class="row gy-2 gy-md-0 gx-xxl-3">
+          <div class="col-12 col-md-4">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+              <div class="card-body">
+                <h3 class="h2 mb-2">Casual Dining</h3>
+                <p class="mb-2 text-secondary">Whether you're marking a special occasion or just yearning for delicious cuisine, OSE Dining has you covered. Simply book us, and we'll bring our culinary expertise right to your doorstep.</p>
+                <a href="{% url 'pages:casual_dining_success' %}" class="fw-bold text-decoration-none link-primary">
+                  Casual Dining
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+                <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+              <div class="card-body">
+                <h3 class="h2 mb-2">Fine Dining</h3>
+                <p class="mb-2 text-secondary">Experience fine dining excellence with OSE. 
+                  Our expertly crafted dishes and impeccable service promise a memorable culinary journey. 
+                  Book us now and savor the sophistication in your space/home.</p>
+                <a href="{% url 'pages:finedining' %}" class="fw-bold text-decoration-none link-primary">
+                  Fine Dining
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+                <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+
+              <div class="card-body">
+                <h3 class="h2 mb-2">Customised Dining</h3>
+                <p class="mb-2 text-secondary">
+                  We're delighted to offer personalized services through our professional, seasoned chefs to design menus or create excellent cuisine for you or your guests. 
+                  Whether you're drawn to specific spices, dishes, cultures, or tastes, we provide a service that caters to your culinary desires.
+                </p>
+                <a href="{% url 'pages:customdining' %}" class="fw-bold text-decoration-none link-primary">
+                  Custom Dining
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                  </svg>
+                </a>
+                <div class="bsb-circle bg-accent border border-4 border-accent position-absolute top-100 start-100 translate-middle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+      <!-- Section - About -->
+      <!-- Process 1 - Bootstrap Brain Component -->
+      <section id="scrollspyAbout" class="py-5 py-xl-8 bsb-section-py-xxl-1 bg-black text-white animate__animated">
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+              <h3 class="fs-6 mb-2 text-light text-center text-uppercase">Who Are We?</h3>
+              <h2 class="display-5 mb-2 mb-md-3 text-center text-white">We offer bespoke private dining, bringing our kitchen to your home.</h2>
+              <hr class="w-50 mx-auto mb-1 mb-xl-3 border-light-subtle">
+            </div>
+          </div>
+        </div>
+  
+        <div class="container">
+          <div class="row gy-5 gy-lg-0 align-items-lg-center">
+            <div class="col-12 col-lg-6">
+                <!-- <img class="img-fluid rounded" loading="lazy" src="{% static 'images//works/udoma.webp' %}" alt=""> -->
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="row justify-content-xl-end">
+                <div class="col-12 col-xl-11">
+                    <p class="lead fs-10 mb-2 text-warning">The dining experience provided by OSE is characterized by intimacy, sensuality, and the creation of cherished memories. All in your desired space/location.</p>
+                    <p class="mb-2">OSE Dining recognizes the cultural, traditional, and stylistic importance of food in everyone's lives, aiming to illuminate each individual's unique food narrative.</p>
+                    <p class="mb-5">The culinary team at OSE is driven by a deep passion for excellence, crafting innovative recipes with dedication, affection, and extensive experience.</p>
+
+                    <div class="row gy-4 gy-md-0 gx-xxl-5X">
+                        <div class="col-12 col-md-6">
+                          <div class="d-flex">
+                            <div>
+                              <h4 class="mb-3 text-warning">Our Magnificent Main Course</h4>
+                              <p class="mb-0">We at OSE Private Dining, embodies exclusivity, cultural richness, and professional presentation. It's simple, tasteful, and elegant, with rich flavors that reflect our culinary excellence.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <div class="d-flex">
+                            <div>
+                              <h4 class="mb-3 text-warning">Dessert Glory</h4>
+                              <p class="mb-0">Desserts, made with love and inspired by street snacks, heritage, and childhood tastes, offer memorable treats like banana cake bites, agbalumo syrup, kilishi gelato, and dankwa tuile.</p>
+                            </div>
+                          </div>
+                        </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+</main>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const div = document.getElementById('scrollspyServices');
+    const scrollspyAbout = document.getElementById('scrollspyAbout');
+    const rect = div.getBoundingClientRect();
+    const abt_rect = scrollspyAbout.getBoundingClientRect();
+    
+    // Check if the top and bottom of the div are within the viewport
+    if (rect.top >= 0) {
+      div.classList.add('animate__fadeInUp');
+    } else if (abt_rect.top >= 0) {
+      scrollspyAbout.classList.add('animate__fadeInUp');
+    }
+  });
+</script>
+{% endblock %}
