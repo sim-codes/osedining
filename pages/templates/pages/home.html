@@ -7,7 +7,31 @@
 {% block content %}
 <!-- Main -->
 <main id="main">
-    <h1>Test</h1>  
+    <!-- Hero 3 - Bootstrap Brain Component -->
+    <section id="scrollspyHero" class="bg-black text-white pt-2 pb-5 p-lg-0">
+        <div class="container overflow-hidden">
+        <div class="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
+            <div class="col-12 col-lg-6 order-1 order-lg-0">
+            <h1 class="display-3 fw-bold mb-3 animate__animated animate__backInDown">EQUISITE &amp; DELICIOUS</h1>
+            <p class="fs-4 mb-3 animate__animated animate__backInDown animate__delay-1s">Our passion for exceptional food has inspired ingenious recipes, 
+                crafted with dedication, care, and expertise. 
+                OSE dining would offer you an experience which enables you to share and savor stories through food.</p>
+            <div class="d-grid gap-2 d-sm-flex animate__animated animate__backInDown animate__delay-2s">
+                <a href="{% url 'pages:contact' %}" class="btn btn-warning bsb-btn-3xl btn-lg">Drop a message</a>
+            </div>
+            </div>
+            <div class="col-12 col-lg-5 text-center">
+            <div class="position-relative">
+                <div class="bsb-circle border border-4 border-warning position-absolute top-50 start-10 translate-middle z-1"></div>
+                <div class="bsb-circle bg-primary position-absolute top-50 start-50 translate-middle" style="--bsb-cs: 460px;"></div>
+                <div class="bsb-circle border border-4 border-warning position-absolute top-10 end-0 z-1" style="--bsb-cs: 100px;"></div>
+                <img class="img-fluid position-relative z-2" loading="lazy" src="https://purepng.com/public/uploads/large/purepng.com-chefcheftrained-professional-cookfood-preparationkitchenchefsexperienced-1421526670303qwiib.png" alt="">
+                <img class="img-fluid position-relative z-2 food-animate rounded-circle" loading="lazy" src="{% static 'images//works/desert1.webp' %}" alt="" style="margin-top: 2rem;">
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
 </main>
 
 <script>
