@@ -207,7 +207,7 @@ const header = `
                 <img src="https://i.ibb.co/Kxcr0bY/black-logo.png" alt="Ose Logo" width="120px" style="{margin: 5px;}" class="logo text-center">
                 <ul class="list-unstyled">
                     <li style="font-size: 20px; "><b>Contact:</b></li>
-                    <li>booking@osedining.com</li>
+                    <li>bookings@osedining.com.ng</li>
                     <li>+234 816 747 6771</li>
                 </ul>
             </div>
