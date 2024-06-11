@@ -102,7 +102,10 @@ class ContactView(FormView):
                 subject = form.cleaned_data['subject']
                 message = form.cleaned_data['message']
                 email = form.cleaned_data['email']
-                send_mail(subject, message, email, [settings.EMAIL_HOST_USER])
+                send_mail(subject, message, 
+                          [settings.EMAIL_HOST_USER], 
+                          recipient_list=[settings.EMAIL_HOST_USER, email], 
+                          fail_silently=True)
                 return redirect('pages:success')
             else:
             # show form errors
