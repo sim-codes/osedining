@@ -110,8 +110,8 @@ class ContactView(FormView):
         send_mail(
             subject="Received contact form submission",
             message=full_message,
-            from_email=email,
-            recipient_list=[settings.NOTIFY_EMAIL],
+            from_email=settings.NOTIFY_EMAIL,
+            recipient_list=[email, settings.NOTIFY_EMAIL],
         )
         return super(ContactView, self).form_valid(form)
 
