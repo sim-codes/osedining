@@ -24,6 +24,9 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
+ADMINS = [('Ibrahim Michael', 'segunmichael24@gmail.com')]
+MANAGERS = ADMINS
+
 
 # Application definition
 
@@ -147,6 +150,14 @@ STORAGES = {
 }
 
 
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+SECURE_HSTS_SECONDS = 518400 # 6 days
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+CSRF_COOKIE_SECURE = True
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -154,10 +165,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.privateemail.com'
+EMAIL_PORT = 465
 EMAIL_HOST_USER = env('HOST_USER')
 EMAIL_HOST_PASSWORD = env('HOST_PASSWORD')
 EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'Osedining <noreply@mydomain.com>'
+EMAIL_USE_SSL = True
 # NOTIFY_EMAIL = "ehisfoods@yahoo.com"
