@@ -172,4 +172,4 @@ EMAIL_HOST_PASSWORD = env('HOST_PASSWORD')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Osedining <noreply@mydomain.com>'
 EMAIL_USE_SSL = True
-# NOTIFY_EMAIL = "ehisfoods@yahoo.com"
+NOTIFY_EMAIL = "ehisfoods@yahoo.com"
