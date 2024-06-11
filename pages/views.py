@@ -93,25 +93,16 @@ class ContactView(FormView):
     form_class = ContactForm
     template_name = 'pages/contact.html'
 
-    def get_success_url(self):
-        return reverse('pages:success')
-    
-    def form_valid(self, form):
-        email = form.cleaned_data.get('email')
-        subject = form.cleaned_data.get('subject')
-        message = form.cleaned_data.get('message')
-
-        full_message = f'''
-            Received message below from {email}, {subject}
-            ---------------------------
-
-            {message}
-        '''
-        send_mail(
-            subject="Received contact form submission",
-            message=full_message,
-            from_email=settings.NOTIFY_EMAIL,
-            recipient_list=[email, settings.NOTIFY_EMAIL],
-        )
-        return super(ContactView, self).form_valid(form)
-
+    # Save message and send email
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                form.save()
+                subject = form.cleaned_data['subject']
+                message = form.cleaned_data['message']
+                email = form.cleaned_data['email']
+                send_mail(subject, message, email, [settings.EMAIL_HOST_USER])
+                return redirect('pages:success')
+            else:
+                return redirect('pages:contact')
