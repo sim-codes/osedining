@@ -24,6 +24,18 @@
             <div class="col-12 col-md-12">
               <div class="card bg-transparent border-primary rounded-0 overflow-hidden">
                 <div class="card-body">
+                  <!-- Print form errors -->
+                  {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                      <strong>Oops!</strong> There was an error processing your request.
+                      <ul>
+                        {% for field in form %}
+                          {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                    </div>
                   
                     <form action="" method="post">
                         {% csrf_token %}

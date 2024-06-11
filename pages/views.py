@@ -105,4 +105,6 @@ class ContactView(FormView):
                 send_mail(subject, message, email, [settings.EMAIL_HOST_USER])
                 return redirect('pages:success')
             else:
-                return redirect('pages:contact')
+            # show form errors
+                return render(request, 'pages/contact.html', {'form': form})
+
