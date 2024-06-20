@@ -45,9 +45,6 @@ class CustomisedDining(BaseRequest):
         return f'Custom menu request by {self.your_name}'
 
 class BaseDining(models.Model):
-    POLICIES = (
-
-    )
     your_name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     email = models.EmailField(blank=True, null=True)
