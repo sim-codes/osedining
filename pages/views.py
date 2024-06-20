@@ -117,7 +117,7 @@ def notify_user(email):
 def notify_admin(form, dining_type):
     name = form.cleaned_data['your_name']
     subject = f'New message from {name} for {dining_type} dining'
-    from_email, to = settings.EMAIL_HOST_USER
+    from_email= to = settings.EMAIL_HOST_USER
 
     text_content = f'{name} has requested for {dining_type} dining, below are the details:'
 
@@ -128,13 +128,13 @@ def notify_admin(form, dining_type):
         <table>
     """
     for key, value in form.cleaned_data.items():
-        html += f"""
+        html_content += f"""
         <tr>
             <td>{key}</td>
             <td>{value}</td>
         </tr>
         """
-    html += """
+    html_content += """
         </table>
         </body>
     </html>
