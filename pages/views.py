@@ -44,6 +44,8 @@ class HireAChefView(FormView):
         if request.method == 'POST':
             form = HireForm(request.POST)
             if form.is_valid():
+                notify_admin(form, 'hire')
+                notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:hire_a_chef_success')
 
@@ -56,6 +58,8 @@ class CustomDiningView(FormView):
         if request.method == 'POST':
             form = CustomDiningForm(request.POST)
             if form.is_valid():
+                notify_admin(form, 'Custom')
+                notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:customdining-successful')
 
@@ -67,6 +71,8 @@ class FineDiningView(FormView):
         if request.method == 'POST':
             form = FineDiningForm(request.POST)
             if form.is_valid():
+                notify_admin(form, 'fine')
+                notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:finedining_success')
             
@@ -80,6 +86,7 @@ class CasualDiningView(FormView):
             form = CasualDiningForm(request.POST)
             if form.is_valid():
                 notify_admin(form, 'casual')
+                notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:casual_dining_success')
 
@@ -93,13 +100,8 @@ class ContactView(FormView):
             form = ContactForm(request.POST)
             if form.is_valid():
                 form.save()
-                subject = form.cleaned_data['subject']
-                message = form.cleaned_data['message']
-                email = form.cleaned_data['email']
-                send_mail(subject, message, 
-                          settings.EMAIL_HOST_USER,
-                          [settings.EMAIL_HOST_USER, email], 
-                          fail_silently=True)
+                notify_admin(form, 'contact')
+                notify_user(form.cleaned_data['email'])
                 return redirect('pages:success')
             else:
             # show form errors
@@ -108,23 +110,25 @@ class ContactView(FormView):
 
 # notify user by email and the fill form
 def notify_user(email):
-    subject = 'Your application has been received'
-    message = 'We will get back to you soon'
-    email = email
+    subject = 'Thank you for contacting us'
+    message = 'We will get back to you shortly'
+    from_email = settings.EMAIL_HOST_USER
+    to = email
+    send_mail(subject, message, from_email, [to], fail_silently=True)
 
 
 # notify admin by email
 def notify_admin(form, dining_type):
     name = form.cleaned_data['your_name']
     subject = f'New message from {name} for {dining_type} dining'
-    from_email= to = settings.EMAIL_HOST_USER
-
+    from_email = to = settings.EMAIL_HOST_USER
     text_content = f'{name} has requested for {dining_type} dining, below are the details:'
 
-    html_content = """
+    html_content = f"""
     <htm>
         <head></head>
         <body>
+        <p><strong>{name}</strong> has requested for <strong>{dining_type}</strong> dining, below are the details:</p>
         <table>
     """
     for key, value in form.cleaned_data.items():
@@ -140,6 +144,6 @@ def notify_admin(form, dining_type):
     </html>
     """
 
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to], reply_to=[form.cleaned_data['email']])
     msg.attach_alternative(html_content, "text/html")
     msg.send()
