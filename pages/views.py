@@ -111,7 +111,13 @@ class ContactView(FormView):
 # notify user by email and the fill form
 def notify_user(email):
     subject = 'Thank you for contacting us'
-    message = 'We will get back to you shortly'
+    message = '''
+    We will get back to you shortly
+
+    Chef Ehis
+    Ose Private Dining
+    +234 816 747 6771
+    '''
     from_email = settings.EMAIL_HOST_USER
     to = email
     send_mail(subject, message, from_email, [to], fail_silently=True)
