@@ -27,6 +27,7 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split("
 ADMINS = [('Ibrahim Michael', 'segunmichael24@gmail.com')]
 MANAGERS = ADMINS
 
+SITE_ID = 1
 
 # Application definition
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # 'django_webp',
 
     # local apps
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'letsencrypt',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
