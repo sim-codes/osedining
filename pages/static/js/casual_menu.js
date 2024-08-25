@@ -33,7 +33,7 @@ const menu1 = {
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '950,000'
+    price: '1,300,000'
 
 }
 
@@ -56,7 +56,7 @@ const menu2 = {
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '1,200,000'
+    price: '1,700,000'
 
 }
 
