@@ -25,15 +25,14 @@ const menu1 = {
     salad: 'Loaded Prawns Kilishi Caesar Salad: Eggs, baby cos lettuce, prawn, anchovy, kilishi,  pancetta focaccia , parsley, parmesan Caesar dressing',
     main: ['Coconut grilled chicken roulade: 48 hours marinate chicken, spinach mushroom, chili mushroom sauce, coriander emulsion, coconut syrup.',
     'Braised Lamb shank: Braised lamb shank, red wine gravy, leek rosemary puree, Beef short ribs, carrot texture, rosemary jus'],
-    desert: ['Coffee Caramel dark chocolate tart',
-    'Creamy dark chocolate ganache', 'Nutty ice cream', 'Plantain Crumbs'],
+    desert: ['Coffee Caramel dark chocolate tart, Creamy dark chocolate ganache, Nutty ice cream, Plantain Crumbs'],
     bread: ['Focaccia', 'Sourdough', 'Garlic bread', 'Challah'],
     sides: ['Buttering mashed potatoes', 'Cheesy garlic roasted butter potatoes',
     'Potatoes fondant', 'Creamy baby potatoes', 'OSE special fried rice', 'Spaghetti stir fry', 
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '1,500,000'
+    price: '1,950,000'
 
 }
 
@@ -49,14 +48,14 @@ const menu2 = {
     main: ['Char Grilled Red Snapper: Grilled full red snapper, celeriac truffle sauce, ugba salsa Verde, OSE pepper sauce',
     'Ose char chicken roast: Five spice char chicken with OSE BBQ sauce served coconut curry sauce',
     'Beef Goulash: Beef, potatoes, vegetable'],
-    desert: ['Hibiscus cheesecake, Hibiscus custard, Smoked strawberry oat dust, Tuile, Homemade uyayak gelato', 'A 200ml bowl of gelato', 'Zobo syrup'],
+    desert: ['Hibiscus cheesecake, Hibiscus custard, Smoked strawberry oat dust, Tuile, Homemade uyayak gelato, gelato, Zobo syrup'],
     bread: ['Focaccia', 'Sourdough', 'Garlic bread', 'Challah'],
     sides: ['Buttering mashed potatoes', 'Cheesy garlic roasted butter potatoes',
     'Potatoes fondant', 'Creamy baby potatoes', 'OSE special fried rice', 'Spaghetti stir fry', 
     'Coriander jasmine', 'Smoked asun jollof'],
     vegetable: ['Roasted carrot ', 'Broccoli tempura', 'Sautéed mushroom', 
     'Pickled onion', 'Mixed bell pepper', 'Sautéed spinach', 'Assorted bread'],
-    price: '2,100,000'
+    price: '2,730,000'
 
 }
 
@@ -64,7 +63,7 @@ const menu2 = {
 function htmlData4Menu(menu) {
     let data = `
     <h2>${menu.menuNo}</h2>
-    <p class="fw-bold">Smack and Dip</p>
+    <p class="fw-bold">Snack and Dip</p>
     <ul>
     `;
     menu.smackAndDip.forEach(item => {
@@ -142,7 +141,7 @@ const header = `
                 <img src="https://i.ibb.co/Kxcr0bY/black-logo.png" alt="Ose Logo" width="120px" style="{margin: 5px;}" class="logo text-center">
                 <ul class="list-unstyled">
                     <li style="font-size: 20px; "><b>Contact:</b></li>
-                    <li>bookings@osedining.com.ng</li>
+                    <li>ehisfoods@yahoo.com</li>
                     <li>+234 816 747 6771</li>
                 </ul>
             </div>

@@ -44,8 +44,8 @@ class HireAChefView(FormView):
         if request.method == 'POST':
             form = HireForm(request.POST)
             if form.is_valid():
-                notify_admin(form, 'hire')
-                notify_user(form.cleaned_data['email'])
+                # notify_admin(form, 'hire')
+                # notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:hire_a_chef_success')
 
@@ -58,8 +58,8 @@ class CustomDiningView(FormView):
         if request.method == 'POST':
             form = CustomDiningForm(request.POST)
             if form.is_valid():
-                notify_admin(form, 'Custom')
-                notify_user(form.cleaned_data['email'])
+                # notify_admin(form, 'Custom')
+                # notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:customdining-successful')
 
@@ -71,8 +71,8 @@ class FineDiningView(FormView):
         if request.method == 'POST':
             form = FineDiningForm(request.POST)
             if form.is_valid():
-                notify_admin(form, 'fine')
-                notify_user(form.cleaned_data['email'])
+                # notify_admin(form, 'fine')
+                # notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:finedining_success')
             
@@ -85,8 +85,8 @@ class CasualDiningView(FormView):
         if request.method == 'POST':
             form = CasualDiningForm(request.POST)
             if form.is_valid():
-                notify_admin(form, 'casual')
-                notify_user(form.cleaned_data['email'])
+                # notify_admin(form, 'casual')
+                # notify_user(form.cleaned_data['email'])
                 form.save()
                 return redirect('pages:casual_dining_success')
 
@@ -100,8 +100,8 @@ class ContactView(FormView):
             form = ContactForm(request.POST)
             if form.is_valid():
                 form.save()
-                notify_admin(form, 'contact')
-                notify_user(form.cleaned_data['email'])
+                # notify_admin(form, 'contact')
+                # notify_user(form.cleaned_data['email'])
                 return redirect('pages:success')
             else:
             # show form errors
