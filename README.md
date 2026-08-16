@@ -4,6 +4,21 @@ Marketing and booking website for Ose Private Dining (Chef Ehis). Built with
 Django, it presents the chef's menus and gallery and lets visitors submit
 booking/inquiry forms for private dining services.
 
+**Live site:** [osedining.com](https://osedining.com)
+
+## Table of contents
+
+- [Tech stack](#tech-stack)
+- [Folder structure](#folder-structure)
+- [Local setup](#local-setup)
+- [Common commands](#common-commands)
+- [Environment variables](#environment-variables)
+- [Routes](#routes)
+- [Static files & deployment](#static-files--deployment)
+- [Notes](#notes)
+- [References](#references)
+- [Owner](#owner)
+
 ## Tech stack
 
 - **Python** 3.14
@@ -16,15 +31,45 @@ booking/inquiry forms for private dining services.
 - **TLS**: `django-letsencrypt` for ACME challenge handling
 - **App server**: Gunicorn (WSGI)
 
-## Project layout
+## Folder structure
 
 ```
-core/            Django project settings, URL routing, WSGI/ASGI entrypoints
-pages/           Main application: models, views, forms, templates, static assets
-bootstrapform/   Vendored local app providing the `{{ form|bootstrap }}` template filter
-public/          Deployment-time static file output (populated by collectstatic)
-manage.py        Django management CLI entrypoint
-requirements.txt Pinned dependencies
+osedining/
+├── core/                     # Django project package
+│   ├── settings.py           # Config, env vars, installed apps, database, email, static files
+│   ├── urls.py                # Root URL routing (admin, pages, captcha, letsencrypt, favicon)
+│   ├── wsgi.py                 # WSGI entrypoint (used by gunicorn in production)
+│   └── asgi.py                  # ASGI entrypoint (async deployment, unused by default)
+│
+├── pages/                    # Main application — all site content and forms
+│   ├── models.py              # Contact, Hire, CustomisedDining, FineDining, CasualDining
+│   ├── views.py                 # Page views + booking form handlers
+│   ├── forms.py                  # ModelForms for each booking type (with captcha)
+│   ├── urls.py                    # App routes, namespaced as `pages`
+│   ├── admin.py                    # Django admin registrations (Contact, FineDining, CustomisedDining)
+│   ├── apps.py                      # AppConfig
+│   ├── tests.py                      # Test stubs
+│   ├── static/                # App static assets
+│   │   ├── css/                 # Stylesheets (base, about, gallery, menu, dark-mode, lightbox)
+│   │   ├── js/                   # Menu interaction + lightbox scripts
+│   │   ├── images/                # Logos, hero images, food photography
+│   │   │   └── works/               # Gallery photo set (dining event photos, .avif/.webp)
+│   │   └── favicon*, apple-touch-icon.png, android-chrome-*.png
+│   └── templates/             # Django templates
+│       ├── base.html, nav.html, footer.html, 404.html, 500.html
+│       ├── pages/                # home, about, menu, gallery, contact, success, hire-a-chef
+│       ├── menus/                 # fine dining / casual dining / special menu pages + success pages
+│       └── forms/                  # standalone form partials
+│
+├── bootstrapform/             # Vendored local app — form rendering template filter
+│   ├── templatetags/bootstrap.py  # `{{ form|bootstrap }}` filter (see [Notes](#notes))
+│   ├── templates/bootstrapform/    # field.html, form.html, formset.html
+│   └── config.py                    # BOOTSTRAP_COLUMN_COUNT setting
+│
+├── public/static/              # Local placeholder for collectstatic output (not the deploy target)
+├── manage.py                    # Django management CLI entrypoint
+├── requirements.txt               # Pinned Python dependencies
+└── .gitignore                      # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
 ```
 
 ## Local setup
@@ -60,23 +105,25 @@ requirements.txt Pinned dependencies
    email backend is always SMTP (`smtp.privateemail.com`) — there's no
    console-email fallback for local runs.
 
-4. **Run migrations** (uses SQLite when `DEVELOPMENT_MODE=True`):
+4. **Run migrations and start the server** — see [Common
+   commands](#common-commands) below.
 
-   ```bash
-   python manage.py migrate
-   ```
+## Common commands
 
-5. **Create an admin user**:
+Run these from the project root with the virtual environment activated.
 
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Run the dev server**:
-
-   ```bash
-   python manage.py runserver
-   ```
+| Command | Purpose |
+|---|---|
+| `python manage.py runserver` | Start the local development server |
+| `python manage.py migrate` | Apply database migrations (SQLite when `DEVELOPMENT_MODE=True`) |
+| `python manage.py makemigrations pages` | Generate new migrations after changing `pages/models.py` |
+| `python manage.py createsuperuser` | Create an admin account for `/admin/` |
+| `python manage.py test` | Run the test suite |
+| `python manage.py collectstatic` | Collect static files into `STATIC_ROOT` (see [Static files & deployment](#static-files--deployment)) |
+| `python manage.py check` | Run Django's system checks |
+| `python manage.py shell` | Open an interactive shell with the project loaded |
+| `pip install -r requirements.txt` | Install/sync dependencies |
+| `gunicorn core.wsgi:application` | Run the production WSGI server |
 
 ## Environment variables
 
@@ -84,7 +131,7 @@ requirements.txt Pinned dependencies
 |---|---|---|
 | `DJANGO_SECRET_KEY` | Django `SECRET_KEY` | randomly generated if unset (not safe for production) |
 | `DEBUG` | Enables Django debug mode (`"True"`/`"False"`) | `False` |
-| `DJANGO_ALLOWED_HOSTS` | Comma-separated `ALLOWED_HOSTS` | `127.0.0.1,localhost` |
+| `DJANGO_ALLOWED_HOSTS` | Comma-separated `ALLOWED_HOSTS` (production: `osedining.com,www.osedining.com`) | `127.0.0.1,localhost` |
 | `DEVELOPMENT_MODE` | When `"True"`, uses local SQLite instead of Postgres | `False` |
 | `DB_NAME`, `DB_USER`, `DB_PASSWORD` | PostgreSQL credentials (required unless `DEVELOPMENT_MODE=True`); host is hardcoded to `localhost` | — |
 | `HOST_USER` | SMTP username; also used as the from-address and notification recipient | — |
@@ -141,5 +188,21 @@ certificate renewal.
   footprint.
 - HTTPS-hardening settings (`SECURE_SSL_REDIRECT`, `SESSION_COOKIE_SECURE`,
   `SECURE_HSTS_*`, `CSRF_COOKIE_SECURE`) are present but commented out in
-  `core/settings.py` — enable them once the production domain is served
-  over HTTPS.
+  `core/settings.py`. The site is live at
+  [osedining.com](https://osedining.com) with `django-letsencrypt`
+  handling certificates, so it's worth confirming HTTPS is enforced end to
+  end and turning these on if not already.
+
+## References
+
+- [Django documentation](https://docs.djangoproject.com/en/5.2/)
+- [Django deployment checklist](https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/)
+- [WhiteNoise documentation](https://whitenoise.readthedocs.io/)
+- [django-simple-captcha documentation](https://django-simple-captcha.readthedocs.io/)
+- [django-letsencrypt on PyPI](https://pypi.org/project/django-letsencrypt/)
+- [Gunicorn documentation](https://docs.gunicorn.org/)
+- [psycopg2 documentation](https://www.psycopg.org/docs/)
+
+## Owner
+
+Maintained by Michael Ibrahim (Ibrahim Michael) — segunmichael24@gmail.com
