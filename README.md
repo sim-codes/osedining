@@ -205,7 +205,7 @@ certificate renewal.
 
 ## Owner
 
-Maintained by Michael Ibrahim (Ibrahim Michael)
+Maintained by Michael Ibrahim Oluwasegun (Simcodes)
 
 - Email: [segunmichael24@gmail.com](mailto:segunmichael24@gmail.com)
 - Portfolio: [My portfolio](https://simportfolio.netlify.app/)

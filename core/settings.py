@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
-ADMINS = [('Ibrahim Michael', 'segunmichael24@gmail.com')]
+ADMINS = [('Michael Ibrahim Oluwasegun', 'segunmichael24@gmail.com')]
 MANAGERS = ADMINS
 
 SITE_ID = 1
