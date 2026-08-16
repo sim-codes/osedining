@@ -21,7 +21,9 @@ booking/inquiry forms for private dining services.
 
 ## Tech stack
 
-- **Python** 3.14
+- **Python** 3.14 in development; 3.13 in production on Truehost (the
+  highest version its cPanel Python App currently offers — both are
+  supported by Django 5.2)
 - **Django** 5.2 (LTS)
 - **Database**: PostgreSQL in production (`psycopg2-binary`), SQLite in
   development
@@ -68,8 +70,10 @@ osedining/
 │
 ├── public/static/              # Local placeholder for collectstatic output (not the deploy target)
 ├── manage.py                    # Django management CLI entrypoint
-├── requirements.txt               # Pinned Python dependencies
-└── .gitignore                      # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
+├── passenger_wsgi.py              # WSGI entrypoint for cPanel/Passenger hosting (Truehost)
+├── .cpanel.yml                     # cPanel Git deploy tasks: install deps, migrate, collectstatic, restart
+├── requirements.txt                  # Pinned Python dependencies
+└── .gitignore                         # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
 ```
 
 ## Local setup
@@ -156,13 +160,44 @@ Run these from the project root with the virtual environment activated.
 
 ## Static files & deployment
 
-`STATIC_ROOT` is hardcoded to `/var/www/html/osedining/public/static`,
-matching the production server's directory layout. Running
-`python manage.py collectstatic` locally will attempt to write there and
-fail unless that path exists or `STATIC_ROOT` is overridden — override it
-locally if you need to run `collectstatic` outside the production host.
+`STATIC_ROOT` resolves to `<project root>/staticfiles`. WhiteNoise serves
+static files directly from the WSGI app (`CompressedManifestStaticFilesStorage`),
+so this directory doesn't need to live in a public webroot — it just needs
+to exist and be writable wherever the app runs.
 
-In production, the process is expected to run behind Gunicorn:
+### Deploying on Truehost (cPanel)
+
+The site is hosted on Truehost at `/home/lujcbbnb/osedining.com`, deployed
+via cPanel's Git Version Control + Python App features:
+
+1. **Software → Setup Python App** — create an app rooted at
+   `osedining.com` (i.e. `/home/lujcbbnb/osedining.com`), picking the
+   highest available Python version (3.13 on Truehost at the time of
+   writing). Add the production
+   values for all variables listed in [Environment
+   variables](#environment-variables) under the app's environment
+   variables section (`DEVELOPMENT_MODE=False`, `DEBUG=False`,
+   `DJANGO_ALLOWED_HOSTS=osedining.com,www.osedining.com`, etc.).
+2. **PostgreSQL Databases** — create the production database and user,
+   and use those values for `DB_NAME`/`DB_USER`/`DB_PASSWORD`.
+3. **Files → Git Version Control** — create a repository pointing at
+   this repo's remote, with the repository path set to the same
+   `/home/lujcbbnb/osedining.com` directory.
+4. Deploying pulls the latest commit and runs the tasks in
+   [`.cpanel.yml`](.cpanel.yml) (install dependencies, run migrations,
+   collect static files, then touch `tmp/restart.txt` to reload the
+   Passenger process). **Before your first deploy**, update the
+   `VENVPATH` line in `.cpanel.yml` to match the exact virtualenv path
+   cPanel shows on the Setup Python App page for this app (it embeds the
+   Python version, e.g. `.../3.13`).
+5. `passenger_wsgi.py` at the project root exposes the Django WSGI
+   application to Passenger, which manages the process — there's no
+   need to run `gunicorn` manually on this host.
+
+### Deploying elsewhere (generic WSGI host)
+
+For a plain VPS or any host that runs Gunicorn directly instead of
+Passenger:
 
 ```bash
 gunicorn core.wsgi:application

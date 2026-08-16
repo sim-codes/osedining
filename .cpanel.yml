@@ -1,0 +1,12 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/lujcbbnb/osedining.com/
+    - /bin/mkdir -p $DEPLOYPATH/tmp
+    # Replace VENVPATH below with the exact virtualenv path/Python version
+    # shown on cPanel's "Setup Python App" page for this application.
+    - export VENVPATH=/home/lujcbbnb/virtualenv/osedining.com/3.13
+    - source $VENVPATH/bin/activate && cd $DEPLOYPATH && pip install -r requirements.txt
+    - source $VENVPATH/bin/activate && cd $DEPLOYPATH && python manage.py migrate --noinput
+    - source $VENVPATH/bin/activate && cd $DEPLOYPATH && python manage.py collectstatic --noinput
+    - /bin/touch $DEPLOYPATH/tmp/restart.txt
