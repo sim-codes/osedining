@@ -205,4 +205,7 @@ certificate renewal.
 
 ## Owner
 
-Maintained by Michael Ibrahim (Ibrahim Michael) — segunmichael24@gmail.com
+Maintained by Michael Ibrahim (Ibrahim Michael)
+
+- Email: [segunmichael24@gmail.com](mailto:segunmichael24@gmail.com)
+- Portfolio: [My portfolio](https://simportfolio.netlify.app/)
