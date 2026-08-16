@@ -21,9 +21,8 @@ booking/inquiry forms for private dining services.
 
 ## Tech stack
 
-- **Python** 3.14 in development; 3.13 in production on Truehost (the
-  highest version its cPanel Python App currently offers — both are
-  supported by Django 5.2)
+- **Python** 3.14 (Django 5.2 also supports 3.10–3.13, if your host
+  doesn't offer 3.14 yet)
 - **Django** 5.2 (LTS)
 - **Database**: PostgreSQL in production (`psycopg2-binary`), SQLite in
   development
@@ -70,10 +69,9 @@ osedining/
 │
 ├── public/static/              # Local placeholder for collectstatic output (not the deploy target)
 ├── manage.py                    # Django management CLI entrypoint
-├── passenger_wsgi.py              # WSGI entrypoint for cPanel/Passenger hosting (Truehost)
-├── .cpanel.yml                     # cPanel Git deploy tasks: install deps, migrate, collectstatic, restart
-├── requirements.txt                  # Pinned Python dependencies
-└── .gitignore                         # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
+├── deploy.py                      # Deployment script: install deps, migrate, collectstatic
+├── requirements.txt                 # Pinned Python dependencies
+└── .gitignore                        # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
 ```
 
 ## Local setup
@@ -165,47 +163,30 @@ static files directly from the WSGI app (`CompressedManifestStaticFilesStorage`)
 so this directory doesn't need to live in a public webroot — it just needs
 to exist and be writable wherever the app runs.
 
-### Deploying on Truehost (cPanel)
+### Deploying
 
-The site is hosted on Truehost at `/home/lujcbbnb/osedining.com`, deployed
-via cPanel's Git Version Control + Python App features:
+1. Pull the latest commit onto the host and activate the app's Python
+   virtualenv.
+2. Set the production environment variables (see [Environment
+   variables](#environment-variables)) — at minimum
+   `DEVELOPMENT_MODE=False`, `DEBUG=False`, `DJANGO_ALLOWED_HOSTS`, a
+   real `DJANGO_SECRET_KEY`, and the `DB_*`/`HOST_*` values.
+3. Run:
 
-1. **Software → Setup Python App** — create an app rooted at
-   `osedining.com` (i.e. `/home/lujcbbnb/osedining.com`), picking the
-   highest available Python version (3.13 on Truehost at the time of
-   writing). Add the production
-   values for all variables listed in [Environment
-   variables](#environment-variables) under the app's environment
-   variables section (`DEVELOPMENT_MODE=False`, `DEBUG=False`,
-   `DJANGO_ALLOWED_HOSTS=osedining.com,www.osedining.com`, etc.).
-2. **PostgreSQL Databases** — create the production database and user,
-   and use those values for `DB_NAME`/`DB_USER`/`DB_PASSWORD`.
-3. **Files → Git Version Control** — create a repository pointing at
-   this repo's remote, with the repository path set to the same
-   `/home/lujcbbnb/osedining.com` directory.
-4. Deploying pulls the latest commit and runs the tasks in
-   [`.cpanel.yml`](.cpanel.yml) (install dependencies, run migrations,
-   collect static files, then touch `tmp/restart.txt` to reload the
-   Passenger process). **Before your first deploy**, update the
-   `VENVPATH` line in `.cpanel.yml` to match the exact virtualenv path
-   cPanel shows on the Setup Python App page for this app (it embeds the
-   Python version, e.g. `.../3.13`).
-5. `passenger_wsgi.py` at the project root exposes the Django WSGI
-   application to Passenger, which manages the process — there's no
-   need to run `gunicorn` manually on this host.
+   ```bash
+   python deploy.py
+   ```
 
-### Deploying elsewhere (generic WSGI host)
+   [`deploy.py`](deploy.py) checks that a virtualenv is active and that
+   it's being run from the project root, then installs dependencies
+   from `requirements.txt`, runs migrations, and collects static
+   files.
+4. Start/restart the WSGI process (e.g. `gunicorn core.wsgi:application`,
+   or whatever process manager the host uses) — that part isn't
+   automated by `deploy.py`.
 
-For a plain VPS or any host that runs Gunicorn directly instead of
-Passenger:
-
-```bash
-gunicorn core.wsgi:application
-```
-
-with PostgreSQL configured via the `DB_*` environment variables and a
-reverse proxy (e.g. nginx) in front, using `django-letsencrypt` for
-certificate renewal.
+Consult your hosting provider's own documentation for provider-specific
+steps (creating the database, configuring the WSGI process, TLS, etc.).
 
 ## Notes
 
