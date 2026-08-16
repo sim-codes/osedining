@@ -116,47 +116,47 @@ osedining/
 
 Run these from the project root with the virtual environment activated.
 
-| Command | Purpose |
-|---|---|
-| `python manage.py runserver` | Start the local development server |
-| `python manage.py migrate` | Apply database migrations (SQLite when `DEVELOPMENT_MODE=True`) |
-| `python manage.py makemigrations pages` | Generate new migrations after changing `pages/models.py` |
-| `python manage.py createsuperuser` | Create an admin account for `/admin/` |
-| `python manage.py test` | Run the test suite |
-| `python manage.py collectstatic` | Collect static files into `STATIC_ROOT` (see [Static files & deployment](#static-files--deployment)) |
-| `python manage.py check` | Run Django's system checks |
-| `python manage.py shell` | Open an interactive shell with the project loaded |
-| `pip install -r requirements.txt` | Install/sync dependencies |
-| `gunicorn core.wsgi:application` | Run the production WSGI server |
+| Command                                 | Purpose                                                                                              |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `python manage.py runserver`            | Start the local development server                                                                   |
+| `python manage.py migrate`              | Apply database migrations (SQLite when `DEVELOPMENT_MODE=True`)                                      |
+| `python manage.py makemigrations pages` | Generate new migrations after changing `pages/models.py`                                             |
+| `python manage.py createsuperuser`      | Create an admin account for `/admin/`                                                                |
+| `python manage.py test`                 | Run the test suite                                                                                   |
+| `python manage.py collectstatic`        | Collect static files into `STATIC_ROOT` (see [Static files & deployment](#static-files--deployment)) |
+| `python manage.py check`                | Run Django's system checks                                                                           |
+| `python manage.py shell`                | Open an interactive shell with the project loaded                                                    |
+| `pip install -r requirements.txt`       | Install/sync dependencies                                                                            |
+| `gunicorn core.wsgi:application`        | Run the production WSGI server                                                                       |
 
 ## Environment variables
 
-| Variable | Purpose | Default |
-|---|---|---|
-| `DJANGO_SECRET_KEY` | Django `SECRET_KEY` | randomly generated if unset (not safe for production) |
-| `DEBUG` | Enables Django debug mode (`"True"`/`"False"`) | `False` |
-| `DJANGO_ALLOWED_HOSTS` | Comma-separated `ALLOWED_HOSTS` (production: `osedining.com,www.osedining.com`) | `127.0.0.1,localhost` |
-| `DEVELOPMENT_MODE` | When `"True"`, uses local SQLite instead of Postgres | `False` |
-| `DB_NAME`, `DB_USER`, `DB_PASSWORD` | PostgreSQL credentials (required unless `DEVELOPMENT_MODE=True`); host is hardcoded to `localhost` | — |
-| `HOST_USER` | SMTP username; also used as the from-address and notification recipient | — |
-| `HOST_PASSWORD` | SMTP password | — |
+| Variable                            | Purpose                                                                                            | Default                                               |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `DJANGO_SECRET_KEY`                 | Django `SECRET_KEY`                                                                                | randomly generated if unset (not safe for production) |
+| `DEBUG`                             | Enables Django debug mode (`"True"`/`"False"`)                                                     | `False`                                               |
+| `DJANGO_ALLOWED_HOSTS`              | Comma-separated `ALLOWED_HOSTS` (production: `osedining.com,www.osedining.com`)                    | `127.0.0.1,localhost`                                 |
+| `DEVELOPMENT_MODE`                  | When `"True"`, uses local SQLite instead of Postgres                                               | `False`                                               |
+| `DB_NAME`, `DB_USER`, `DB_PASSWORD` | PostgreSQL credentials (required unless `DEVELOPMENT_MODE=True`); host is hardcoded to `localhost` | —                                                     |
+| `HOST_USER`                         | SMTP username; also used as the from-address and notification recipient                            | —                                                     |
+| `HOST_PASSWORD`                     | SMTP password                                                                                      | —                                                     |
 
 ## Routes
 
-| Path | Purpose |
-|---|---|
-| `/` | Home |
-| `/about/` | About / chef bio |
-| `/menu/` | Menu |
-| `/gallery/` | Gallery |
-| `/contact/` | Contact form → `/success/` |
-| `/hire-a-chef/` | Hire-a-chef booking form → `/hire-a-chef/successful` |
-| `/finedining/` | Fine dining booking form → `/finedining/successful/` |
+| Path              | Purpose                                                   |
+| ----------------- | --------------------------------------------------------- |
+| `/`               | Home                                                      |
+| `/about/`         | About / chef bio                                          |
+| `/menu/`          | Menu                                                      |
+| `/gallery/`       | Gallery                                                   |
+| `/contact/`       | Contact form → `/success/`                                |
+| `/hire-a-chef/`   | Hire-a-chef booking form → `/hire-a-chef/successful`      |
+| `/finedining/`    | Fine dining booking form → `/finedining/successful/`      |
 | `/casual-dining/` | Casual dining booking form → `/casual-dining/successful/` |
 | `/custom-dining/` | Custom dining booking form → `/custom-dining/successful/` |
-| `/admin/` | Django admin |
-| `/captcha/` | django-simple-captcha endpoints |
-| `/.well-known/` | Let's Encrypt ACME challenge routes |
+| `/admin/`         | Django admin                                              |
+| `/captcha/`       | django-simple-captcha endpoints                           |
+| `/.well-known/`   | Let's Encrypt ACME challenge routes                       |
 
 ## Static files & deployment
 
