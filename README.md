@@ -21,9 +21,13 @@ booking/inquiry forms for private dining services.
 
 ## Tech stack
 
-- **Python** 3.14 (Django 5.2 also supports 3.10–3.13, if your host
+- **Python** 3.14 (Django 5.1 also supports 3.10–3.13, if your host
   doesn't offer 3.14 yet)
-- **Django** 5.2 (LTS)
+- **Django** 5.1 (pinned below 5.2 because the production host's
+  PostgreSQL is 13.x, and Django 5.2 requires PostgreSQL 14+; Django 5.1
+  is the last release supporting PostgreSQL 13, but note it's no longer
+  a security-supported release — upgrade to 5.2 once Postgres is
+  upgraded)
 - **Database**: PostgreSQL in production (`psycopg2-binary`), SQLite in
   development
 - **Static files**: WhiteNoise (`CompressedManifestStaticFilesStorage`)
