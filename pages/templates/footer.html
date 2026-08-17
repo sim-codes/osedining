@@ -1,20 +1,75 @@
+{% load static %}
 <!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gy-4 py-5">
+      <div class="col-lg-4 col-md-6">
+        <a href="{% url 'pages:home' %}" class="d-inline-block mb-3">
+          <img src="{% static 'images/white-logo.png' %}" class="footer-logo" alt="Ose Dining">
+        </a>
+        <p class="footer-tagline">
+          Private dining experiences crafted by Chef Ehis — fine, casual, and
+          customised menus for every occasion.
+        </p>
+        <ul class="list-unstyled d-flex gap-2 footer-socials">
+          <li>
+            <a href="https://www.instagram.com/osedining/" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-social-link" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-<footer class="footer mt-auto d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mx-5 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <span class="text-black">© 2024 Ose Dining | +234 816 747 6771</span>
+      <div class="col-lg-2 col-md-6">
+        <h6 class="footer-heading">Explore</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="{% url 'pages:home' %}">Home</a></li>
+          <li><a href="{% url 'pages:menu' %}">Menu</a></li>
+          <li><a href="{% url 'pages:gallery' %}">Gallery</a></li>
+          <li><a href="{% url 'pages:contact' %}">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-heading">Dinings</h6>
+        <ul class="list-unstyled footer-links">
+          <li><a href="{% url 'pages:finedining' %}">Fine Dining</a></li>
+          <li><a href="{% url 'pages:casual_dining' %}">Casual Dining</a></li>
+          <li><a href="{% url 'pages:customdining' %}">Customised Dining</a></li>
+          <li><a href="{% url 'pages:hire_a_chef' %}">Hire A Chef</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h6 class="footer-heading">Get In Touch</h6>
+        <ul class="list-unstyled footer-links">
+          <li>
+            <a href="tel:+2348167476771">
+              <i class="bi bi-telephone me-2"></i>+234 816 747 6771
+            </a>
+          </li>
+          <li>
+            <a href="mailto:ehisfoods@yahoo.com">
+              <i class="bi bi-envelope me-2"></i>ehisfoods@yahoo.com
+            </a>
+          </li>
+          <li>
+            <a href="mailto:bookings@osedining.com">
+              <i class="bi bi-envelope me-2"></i>bookings@osedining.com
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <ul class="nav col-md-4 justify-content-end pr-8 list-unstyled d-flex">
-      <li class="ms-3">
-        <a href="" class="text-reset">
-          <i class="bi bi-facebook"></i>
-        </a>
-      </li>
-      <li class="ms-3">
-        <a href="https://www.instagram.com/osedining/" class="text-reset">
-          <i class="bi bi-instagram"></i>
-        </a>
-      </li>
-    </ul>
+    <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center gap-2 py-3">
+      <span>&copy; {% now "Y" %} Ose Dining. All rights reserved.</span>
+      <span>Built by <a href="https://simportfolio.netlify.app/" target="_blank" rel="noopener">Simcodes</a></span>
+    </div>
+  </div>
 </footer>
