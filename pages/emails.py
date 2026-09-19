@@ -208,14 +208,16 @@ def notify_user(form, dining_type):
     recap_html = ''
     if recap_rows:
         rows_html = ''.join(
-            '<div style="display:flex;justify-content:space-between;padding:6px 0;font-size:13.5px;">'
-            f'<span style="color:#8a8272;">{l}</span><span style="color:#1a1a1a;font-weight:600;">{v}</span></div>'
+            '<tr>'
+            f'<td style="padding:6px 0;font-size:13.5px;color:#8a8272;">{l}</td>'
+            f'<td style="padding:6px 0;font-size:13.5px;color:#1a1a1a;font-weight:600;text-align:right;">{v}</td>'
+            '</tr>'
             for l, v in recap_rows
         )
         recap_html = f"""
         <div style="margin:20px 36px 0;background:#f2ede4;border-radius:6px;padding:18px 22px;">
           <div style="font-size:10.5px;font-weight:700;color:#8a8272;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Your Request</div>
-          {rows_html}
+          <table style="width:100%;border-collapse:collapse;">{rows_html}</table>
         </div>
         """
 

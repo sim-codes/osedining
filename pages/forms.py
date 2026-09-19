@@ -1,3 +1,4 @@
+from datetime import date as date_cls
 from django import forms
 from captcha.fields import CaptchaField
 from .models import (Contact,
@@ -6,6 +7,22 @@ from .models import (Contact,
                      CustomisedDining,
                      EmberDining,
                      Hire)
+
+
+class FutureDateFormMixin:
+    """Blocks booking a date that has already passed, both in the date picker and on submit."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if 'date' in self.fields:
+            self.fields['date'].widget.attrs['min'] = date_cls.today().isoformat()
+
+    def clean_date(self):
+        value = self.cleaned_data['date']
+        if value < date_cls.today():
+            raise forms.ValidationError('Please choose today or a future date.')
+        return value
+
 
 class ContactForm(forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'you@email.com'}))
@@ -17,7 +34,7 @@ class ContactForm(forms.ModelForm):
         exclude = ['date_send']
 
 
-class CustomDiningForm(forms.ModelForm):
+class CustomDiningForm(FutureDateFormMixin, forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
     class Meta:
@@ -25,7 +42,7 @@ class CustomDiningForm(forms.ModelForm):
         fields = ['your_name', 'phone', 'email', 'date', 'time', 'location', 'service_details']
 
 
-class FineDiningForm(forms.ModelForm):
+class FineDiningForm(FutureDateFormMixin, forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
     additional_information = forms.CharField(widget=forms.Textarea(attrs={'name':'body', 'rows':3, 'cols':5, 'placeholder':'Kindly specify any alergies or special needs.'}))
@@ -39,7 +56,7 @@ class FineDiningForm(forms.ModelForm):
         
 
 
-class EmberDiningForm(forms.ModelForm):
+class EmberDiningForm(FutureDateFormMixin, forms.ModelForm):
     menu_type = forms.CharField(widget=forms.HiddenInput())
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
@@ -57,7 +74,7 @@ class EmberDiningForm(forms.ModelForm):
                   'additional_information']
 
 
-class CasualDiningForm(forms.ModelForm):
+class CasualDiningForm(FutureDateFormMixin, forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
     additional_information = forms.CharField(widget=forms.Textarea(attrs={'name':'body', 'rows':3, 'cols':5, 'placeholder':'Kindly specify any alergies or special needs.'}))
@@ -71,7 +88,7 @@ class CasualDiningForm(forms.ModelForm):
                   'we_are_allowed_to_use_your_event_content_for_our_business_promotions',
                   'additional_information']
 
-class HireForm(forms.ModelForm):
+class HireForm(FutureDateFormMixin, forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     time = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time'}))
     additional_information = forms.CharField(widget=forms.Textarea(
