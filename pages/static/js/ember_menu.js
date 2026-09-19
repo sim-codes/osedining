@@ -90,3 +90,11 @@ menuTiles.forEach((tile) => {
 window.onload = () => {
     selectMenu('M1');
 }
+
+// Guard against a double-click sending two separate bookings (and two sets of emails).
+const bookingForm = document.getElementById('ember-booking-form');
+const bookingSubmit = document.getElementById('ember-booking-submit');
+bookingForm.addEventListener('submit', () => {
+    bookingSubmit.disabled = true;
+    bookingSubmit.textContent = 'Sending...';
+});

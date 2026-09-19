@@ -1,5 +1,4 @@
 from typing import Any
-import logging
 from datetime import date
 from django.shortcuts import reverse
 from django.views import View
@@ -10,28 +9,9 @@ from .forms import (ContactForm,
                     CasualDiningForm,
                     EmberDiningForm,
                     HireForm)
-from django.core.mail import send_mail
-from django.core.mail import EmailMultiAlternatives
-from django.conf import settings
+from .emails import send_booking_notifications
 
 from django.shortcuts import render, redirect
-
-logger = logging.getLogger(__name__)
-
-
-def send_booking_notifications(form, dining_type):
-    """Notify the admin and the customer; a failure here never blocks the booking itself."""
-    try:
-        notify_admin(form, dining_type)
-    except Exception:
-        logger.exception('Failed to send admin notification for %s booking', dining_type)
-
-    email = form.cleaned_data.get('email')
-    if email:
-        try:
-            notify_user(email)
-        except Exception:
-            logger.exception('Failed to send confirmation email for %s booking', dining_type)
 
 
 class HomePageView(TemplateView):
@@ -57,7 +37,7 @@ class EmberMenuView(FormView):
             form = EmberDiningForm(request.POST)
             if form.is_valid():
                 form.save()
-                send_booking_notifications(form, 'Ember menu')
+                send_booking_notifications(form, 'ember')
                 return redirect('pages:ember_menu_success')
 
 class EmberMenuSuccessful(TemplateView):
@@ -143,7 +123,7 @@ class HireAChefView(FormView):
             form = HireForm(request.POST)
             if form.is_valid():
                 form.save()
-                send_booking_notifications(form, 'hire a chef')
+                send_booking_notifications(form, 'hire')
                 return redirect('pages:hire_a_chef_success')
 
 
@@ -199,51 +179,3 @@ class ContactView(FormView):
             else:
             # show form errors
                 return render(request, 'pages/contact.html', {'form': form})
-
-
-# notify user by email and the fill form
-def notify_user(email):
-    subject = 'Thank you for contacting us'
-    message = '''
-    We will get back to you shortly
-
-    Chef Ehis
-    Ose Private Dining
-    +234 816 747 6771
-    '''
-    from_email = settings.EMAIL_HOST_USER
-    to = email
-    send_mail(subject, message, from_email, [to], fail_silently=True)
-
-
-# notify admin by email
-def notify_admin(form, dining_type):
-    name = form.cleaned_data.get('your_name') or form.cleaned_data.get('email') or 'Someone'
-    subject = f'New message from {name} for {dining_type} dining'
-    from_email = to = settings.EMAIL_HOST_USER
-    text_content = f'{name} has requested for {dining_type} dining, below are the details:'
-
-    html_content = f"""
-    <htm>
-        <head></head>
-        <body>
-        <p><strong>{name}</strong> has requested for <strong>{dining_type}</strong> dining, below are the details:</p>
-        <table>
-    """
-    for key, value in form.cleaned_data.items():
-        html_content += f"""
-        <tr>
-            <td>{key}</td>
-            <td>{value}</td>
-        </tr>
-        """
-    html_content += """
-        </table>
-        </body>
-    </html>
-    """
-
-    reply_to = [form.cleaned_data['email']] if form.cleaned_data.get('email') else None
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to], reply_to=reply_to)
-    msg.attach_alternative(html_content, "text/html")
-    msg.send()
