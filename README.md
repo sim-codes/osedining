@@ -74,8 +74,9 @@ osedining/
 ├── public/static/              # Local placeholder for collectstatic output (not the deploy target)
 ├── manage.py                    # Django management CLI entrypoint
 ├── deploy.py                      # Deployment script: install deps, migrate, collectstatic
+├── create_admin.py                  # Create/update the admin superuser non-interactively (see below)
 ├── requirements.txt                 # Pinned Python dependencies
-└── .gitignore                        # Excludes .venv, .env, __pycache__, migrations/, *.sqlite3
+└── .gitignore                        # Excludes .venv, .env, __pycache__, *.sqlite3
 ```
 
 ## Local setup
@@ -123,7 +124,8 @@ Run these from the project root with the virtual environment activated.
 | `python manage.py runserver`            | Start the local development server                                                                   |
 | `python manage.py migrate`              | Apply database migrations (SQLite when `DEVELOPMENT_MODE=True`)                                      |
 | `python manage.py makemigrations pages` | Generate new migrations after changing `pages/models.py`                                             |
-| `python manage.py createsuperuser`      | Create an admin account for `/admin/`                                                                |
+| `python manage.py createsuperuser`      | Create an admin account for `/admin/` (interactive)                                                  |
+| `python create_admin.py`                | Create/update the admin account non-interactively — for hosts where you can only run a one-off script (see [Deploying](#deploying)) |
 | `python manage.py test`                 | Run the test suite                                                                                   |
 | `python manage.py collectstatic`        | Collect static files into `STATIC_ROOT` (see [Static files & deployment](#static-files--deployment)) |
 | `python manage.py check`                | Run Django's system checks                                                                           |
@@ -142,6 +144,9 @@ Run these from the project root with the virtual environment activated.
 | `DB_NAME`, `DB_USER`, `DB_PASSWORD` | PostgreSQL credentials (required unless `DEVELOPMENT_MODE=True`); host is hardcoded to `localhost` | —                                                     |
 | `HOST_USER`                         | SMTP username; also used as the from-address and notification recipient                            | —                                                     |
 | `HOST_PASSWORD`                     | SMTP password                                                                                      | —                                                     |
+| `ADMIN_USERNAME`                    | Username for `create_admin.py` (see [Deploying](#deploying))                                       | `admin`                                               |
+| `ADMIN_EMAIL`                       | Email for `create_admin.py`; required to run it                                                    | —                                                     |
+| `ADMIN_PASSWORD`                    | Password for `create_admin.py`; required to run it                                                 | —                                                     |
 
 ## Routes
 
@@ -188,6 +193,19 @@ to exist and be writable wherever the app runs.
 4. Start/restart the WSGI process (e.g. `gunicorn core.wsgi:application`,
    or whatever process manager the host uses) — that part isn't
    automated by `deploy.py`.
+5. Create (or reset) the admin account. `manage.py createsuperuser` is
+   interactive (username/email/password prompts), which doesn't work on
+   hosts that only let you run a single script non-interactively (e.g.
+   cPanel's "Setup Python App" run-command box). For that case, set
+   `ADMIN_EMAIL` and `ADMIN_PASSWORD` (optionally `ADMIN_USERNAME`, see
+   [Environment variables](#environment-variables)) and run:
+
+   ```bash
+   python create_admin.py
+   ```
+
+   Safe to re-run — if the username already exists it updates its
+   email/password instead of failing.
 
 Consult your hosting provider's own documentation for provider-specific
 steps (creating the database, configuring the WSGI process, TLS, etc.).
