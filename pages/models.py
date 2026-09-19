@@ -89,6 +89,16 @@ class FineDining(BaseDining):
     menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
 
 
+class EmberDining(BaseDining):
+    MENUS = (
+        ('M1', '3 Course Menu'),
+        ('M2', '4 Course Menu'),
+        ('M3', '5 Course Menu'),
+    )
+
+    menu_type = models.CharField(max_length=2, choices=MENUS, default='M1')
+
+
 class CasualDining(BaseDining):
     BREAD = (
         ('F', 'Focaccia'),

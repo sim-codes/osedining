@@ -1,0 +1,246 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ember Menu — Booking Invoice</title>
+<style>
+    @page {
+        size: A4;
+        margin: 22mm 20mm;
+    }
+
+    body {
+        margin: 0;
+        background-color: #f2ede4;
+        font-family: Helvetica, Arial, sans-serif;
+        color: #1a1a1a;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    .inner {
+        width: 100%;
+    }
+
+    .muted {
+        color: #8a8272;
+    }
+
+    .cap {
+        text-transform: uppercase;
+    }
+
+    .eyebrow {
+        color: #ffc107;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .menu-name {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 4px;
+    }
+
+    .badge {
+        background-color: #fff7e0;
+        border: 1px solid #ffc107;
+        color: #8a6600;
+        padding: 6px 14px;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .course-row td {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee6d8;
+        vertical-align: top;
+    }
+
+    .course-num {
+        width: 30px;
+        font-weight: bold;
+        color: #1b4332;
+        font-size: 12px;
+    }
+
+    .course-label {
+        font-weight: bold;
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    .course-dish {
+        color: #55503f;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+
+    .totals td {
+        padding: 6px 0;
+        font-size: 12px;
+    }
+
+    .total-row td {
+        font-size: 15px;
+        font-weight: bold;
+        border-top: 1px solid #1a1a1a;
+        padding-top: 10px;
+    }
+
+    .disclaimer {
+        font-size: 10px;
+        line-height: 1.6;
+        color: #8a8272;
+        margin-top: 16px;
+    }
+
+    .footer-heading {
+        font-size: 10px;
+        font-weight: bold;
+        color: #8a8272;
+        margin-bottom: 6px;
+    }
+
+    .footer-body {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .actions {
+        text-align: center;
+        padding: 24px 0;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 26px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 4px;
+        margin: 0 6px;
+    }
+
+    .btn-solid {
+        background-color: #1b4332;
+        color: #ffffff;
+        border: 1.5px solid #1b4332;
+    }
+
+    .btn-outline {
+        background-color: #ffffff;
+        color: #0a0a0a;
+        border: 1.5px solid #0a0a0a;
+    }
+
+    button.btn {
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    @media print {
+        .actions {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="actions">
+    <a class="btn btn-outline" href="{% url 'pages:ember_menu' %}">Back to Menu</a>
+    <button type="button" class="btn btn-solid" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<table align="center" style="width: 700px;">
+<tr><td style="background-color: #ffffff; padding: 48px 56px;">
+
+    <table class="inner">
+        <tr>
+            <td style="width: 60%;"><img src="{% static 'images/black_logo.png' %}" height="46" alt="Ose Private Dining"></td>
+            <td style="width: 40%; text-align: right; vertical-align: top;">
+                <div class="cap eyebrow">Booking Invoice</div>
+                <div class="muted" style="font-size: 11px; margin-top: 4px;">{{ generated_date }}</div>
+                <div class="muted" style="font-size: 10px;">Ref {{ reference }}</div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="inner" style="margin-top: 18px;">
+        <tr>
+            <td style="background-color: #1b4332; height: 4px; width: 70%; font-size: 1px; line-height: 1px;">&nbsp;</td>
+            <td style="background-color: #7a1f2b; height: 4px; width: 30%; font-size: 1px; line-height: 1px;">&nbsp;</td>
+        </tr>
+    </table>
+
+    <table class="inner" style="margin-top: 22px;">
+        <tr>
+            <td>
+                <div class="cap muted" style="font-size: 11px;">Ember Menu &middot; Festive Edition</div>
+                <div class="menu-name">{{ menu.name }}</div>
+            </td>
+            <td style="text-align: right; vertical-align: top;">
+                <span class="badge">NGN {{ subtotal_display }} per guest</span>
+            </td>
+        </tr>
+    </table>
+
+    <table class="inner" style="margin-top: 16px;">
+        {% for course in menu.courses %}
+        <tr class="course-row">
+            <td class="course-num">0{{ forloop.counter }}</td>
+            <td>
+                <div class="cap course-label">{{ course.label }}</div>
+                <div class="course-dish">{{ course.dish }}</div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <table class="inner totals" style="margin-top: 18px;">
+        <tr>
+            <td class="muted">Subtotal (per guest)</td>
+            <td style="text-align: right;">NGN {{ subtotal_display }}</td>
+        </tr>
+        <tr>
+            <td class="muted">Service Charge (20%)</td>
+            <td style="text-align: right;">NGN {{ service_charge_display }}</td>
+        </tr>
+        <tr class="total-row">
+            <td>Total (per guest)</td>
+            <td style="text-align: right;">NGN {{ total_display }}</td>
+        </tr>
+    </table>
+
+    <div class="disclaimer">
+        This is a quote prepared from your menu selection on osedining.com. Your booking is only confirmed once our team receives your request via <strong style="color:#55503f;">Book This Menu</strong> &mdash; it is not a receipt of payment. Menu is designed for a minimum of 10 guests.
+    </div>
+
+    <table class="inner" style="margin-top: 36px;">
+        <tr>
+            <td style="width: 50%; vertical-align: top;">
+                <div class="cap footer-heading">Payment Details</div>
+                <div class="footer-body">
+                    <strong>Ehis Foods</strong><br>
+                    Account No. 0122941028
+                </div>
+            </td>
+            <td style="width: 50%; text-align: right; vertical-align: top;">
+                <div class="cap footer-heading">Contact</div>
+                <div class="footer-body">
+                    ehisfoods@yahoo.com<br>
+                    +234 816 747 6771
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</td></tr>
+</table>
+
+</body>
+</html>

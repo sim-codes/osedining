@@ -1,10 +1,13 @@
 from typing import Any
+from datetime import date
 from django.shortcuts import reverse
+from django.views import View
 from django.views.generic import TemplateView, FormView
-from .forms import (ContactForm, 
-                    FineDiningForm, 
-                    CustomDiningForm, 
+from .forms import (ContactForm,
+                    FineDiningForm,
+                    CustomDiningForm,
                     CasualDiningForm,
+                    EmberDiningForm,
                     HireForm)
 from django.core.mail import send_mail
 from django.core.mail import EmailMultiAlternatives
@@ -27,6 +30,82 @@ class AboutView(TemplateView):
     template_name = 'pages/about.html'
 class MenuView(TemplateView):
     template_name = 'pages/menu.html'
+class EmberMenuView(FormView):
+    form_class = EmberDiningForm
+    template_name = 'menus/ember.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = EmberDiningForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('pages:ember_menu_success')
+
+class EmberMenuSuccessful(TemplateView):
+    template_name = 'menus/ember_success.html'
+
+
+EMBER_MENUS = {
+    'M1': {
+        'key': 'M1',
+        'name': '3 Course Menu',
+        'price': 90000,
+        'courses': [
+            {'label': 'First Course', 'dish': 'Shrimp suya arancini, smoked paprika sauce, scent leaf emulsion'},
+            {'label': 'Second Course', 'dish': 'Confit duck, over egusi puree, mashed sweet potatoes, uyayaka oil'},
+            {'label': 'Third Course', 'dish': 'Zozo poached pear, whipped ginger cream, zobo gel, nutty gelato'},
+        ],
+    },
+    'M2': {
+        'key': 'M2',
+        'name': '4 Course Menu',
+        'price': 140000,
+        'courses': [
+            {'label': 'First Course', 'dish': 'Deli beef suya crostini'},
+            {'label': 'Second Course', 'dish': 'Avocado mousse, cassava salad, palm vinaigrette, smoked ugba aioli'},
+            {'label': 'Third Course', 'dish': 'Pan seared seabass, plantain gnocchi, creamy banga gravy'},
+            {'label': 'Fourth Course', 'dish': 'Spiced dark chocolate mango tart, pistachio gelato'},
+        ],
+    },
+    'M3': {
+        'key': 'M3',
+        'name': '5 Course Menu',
+        'price': 220000,
+        'courses': [
+            {'label': 'First Course', 'dish': 'Smoked black snapper pepper soup consommé, iru brioche'},
+            {'label': 'Second Course', 'dish': 'Charred prawn, jollof risotto, spicy flaky plantain tuile'},
+            {'label': 'Third Course', 'dish': 'Braised ehuru tozo, smoked asaro mash, coriander emulsion, amoriri gravy'},
+            {'label': 'Fourth Course', 'dish': 'Lemon avo sorbet'},
+            {'label': 'Fifth Course', 'dish': 'Kuli crumb, zobo caramel, trio gelato, chocolate mousse, zobo tuile'},
+        ],
+    },
+}
+
+SERVICE_CHARGE_RATE = 0.20
+
+
+def _ember_invoice_context(request):
+    menu_key = request.GET.get('menu', 'M1')
+    menu = EMBER_MENUS.get(menu_key, EMBER_MENUS['M1'])
+
+    subtotal = menu['price']
+    service_charge = round(subtotal * SERVICE_CHARGE_RATE)
+    total = subtotal + service_charge
+
+    return {
+        'menu': menu,
+        'subtotal_display': f'{subtotal:,}',
+        'service_charge_display': f'{service_charge:,}',
+        'total_display': f'{total:,}',
+        'generated_date': date.today().strftime('%d %B %Y'),
+        'reference': f"OSE-EMB-{date.today().strftime('%y%m%d')}",
+    }
+
+
+class EmberInvoicePreview(View):
+    def get(self, request, *args, **kwargs):
+        context = _ember_invoice_context(request)
+        return render(request, 'menus/ember_invoice.html', context)
 class HireAChefSuccessfulView(TemplateView):
     template_name = 'pages/hire-successful.html'
 

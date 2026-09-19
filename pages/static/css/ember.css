@@ -1,0 +1,404 @@
+.ember-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+}
+
+.ember-hero__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 78% 45%;
+}
+
+.ember-hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #0a0a0a 0%, #0a0a0a 34%, rgba(10, 10, 10, .86) 48%, rgba(10, 10, 10, .42) 66%, rgba(10, 10, 10, .15) 100%);
+}
+
+.ember-hero__fade {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 -90px 90px -60px #0a0a0a;
+}
+
+.ember-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 620px;
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ember-eyebrow {
+    color: #ffc107;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+}
+
+.ember-title {
+    color: #ffffff;
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+}
+
+.ember-subtitle {
+    color: #d8d0c2;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+.ember-body {
+    background: #f2ede4;
+    padding: 56px 0 64px;
+}
+
+.ember-section-label {
+    color: #6b6355;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    margin-bottom: 14px;
+}
+
+.ember-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.ember-tier {
+    border: 1.5px solid #d8cfbd;
+    border-radius: 6px;
+    padding: 18px 20px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: border-color .15s ease, background-color .15s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.ember-tier__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.ember-tier__price {
+    font-size: 13px;
+    color: #8a8272;
+    margin-top: 4px;
+}
+
+.ember-tier.active {
+    border-color: #1b4332;
+    background: #1b4332;
+}
+
+.ember-tier.active .ember-tier__name {
+    color: #ffffff;
+}
+
+.ember-tier.active .ember-tier__price {
+    color: #cfe3d8;
+}
+
+.ember-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, .06), 0 12px 32px rgba(10, 10, 10, .08);
+    margin-top: 40px;
+}
+
+.ember-card__bar {
+    height: 6px;
+    background: linear-gradient(90deg, #1b4332 0%, #1b4332 70%, #7a1f2b 70%, #7a1f2b 100%);
+}
+
+.ember-card__head {
+    padding: 32px 40px 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ember-card__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.ember-card__badge {
+    background: #fff7e0;
+    border: 1px solid #ffc107;
+    color: #8a6600;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.ember-card__body {
+    padding: 12px 40px 32px;
+}
+
+.ember-course {
+    display: flex;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #eee6d8;
+}
+
+.ember-course:last-child {
+    border-bottom: none;
+}
+
+.ember-course__num {
+    width: 26px;
+    flex-shrink: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1b4332;
+}
+
+.ember-course:last-child .ember-course__num {
+    color: #7a1f2b;
+}
+
+.ember-course__label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.ember-course__dish {
+    font-size: 14px;
+    color: #55503f;
+    line-height: 1.5;
+    margin-top: 2px;
+}
+
+.ember-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.ember-btn-outline {
+    display: inline-block;
+    background: #ffffff;
+    border: 1.5px solid #0a0a0a;
+    color: #0a0a0a;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.ember-btn-outline:hover,
+.ember-btn-outline:focus {
+    color: #0a0a0a;
+}
+
+.ember-btn-solid {
+    background: #1b4332;
+    border: 1.5px solid #1b4332;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 26px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ember-btn-solid:hover,
+.ember-btn-solid:focus {
+    color: #ffffff;
+}
+
+.ember-note {
+    font-size: 12.5px;
+    color: #8a8272;
+    margin-left: auto;
+}
+
+.ember-modal-bar {
+    height: 5px;
+    background: linear-gradient(90deg, #1b4332 0%, #1b4332 70%, #7a1f2b 70%, #7a1f2b 100%);
+}
+
+.ember-modal-badge {
+    display: inline-flex;
+    background: #eaf2ec;
+    color: #1b4332;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-top: 8px;
+}
+
+.ember-modal-body {
+    padding: 8px 40px 28px;
+}
+
+.ember-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+}
+
+.ember-modal-grid .form-group {
+    margin-bottom: 16px;
+}
+
+.ember-modal-grid .form-group:has(textarea),
+.ember-modal-grid .form-group:has(.checkbox) {
+    grid-column: 1 / -1;
+}
+
+.ember-modal-body .control-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+}
+
+.ember-modal-body .form-control {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid #d8cfbd;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #ffffff;
+}
+
+.ember-modal-body .form-control:focus {
+    outline: none;
+    border-color: #1b4332;
+    box-shadow: 0 0 0 3px rgba(27, 67, 50, .15);
+}
+
+.ember-modal-body textarea.form-control {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.ember-modal-body .checkbox {
+    margin-bottom: 10px;
+}
+
+.ember-modal-body .checkbox label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #55503f;
+    font-weight: 400;
+}
+
+.ember-modal-body .checkbox input[type="checkbox"] {
+    accent-color: #1b4332;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 575.98px) {
+    .ember-modal-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ember-success-hero {
+    background: #0a0a0a;
+    padding: 72px 56px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+}
+
+.ember-success-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 999px;
+    background: #1b4332;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ember-checklist {
+    padding: 8px 36px 20px;
+}
+
+.ember-check-row {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee6d8;
+    font-size: 14px;
+    color: #55503f;
+    line-height: 1.5;
+}
+
+.ember-check-row:last-child {
+    border-bottom: none;
+}
+
+.ember-check-row svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@media (max-width: 575.98px) {
+    .ember-checklist {
+        padding: 8px 20px 16px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .ember-tiers {
+        grid-template-columns: 1fr;
+    }
+
+    .ember-title {
+        font-size: 32px;
+    }
+
+    .ember-note {
+        margin-left: 0;
+    }
+}

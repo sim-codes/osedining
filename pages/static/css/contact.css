@@ -1,0 +1,219 @@
+.contact-split {
+    display: flex;
+    flex-wrap: wrap;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(10, 10, 10, .06), 0 20px 48px rgba(10, 10, 10, .1);
+}
+
+.contact-panel-brand {
+    flex: 1 1 420px;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 64px 56px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.contact-eyebrow {
+    color: #ffc107;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+}
+
+.contact-title {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 10px 0 0;
+}
+
+.contact-tagline {
+    color: #d8d0c2;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 380px;
+    margin-top: 12px;
+}
+
+.contact-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, #ffc107 0%, rgba(255, 193, 7, 0) 100%);
+    margin: 4px 0;
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-info-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14.5px;
+}
+
+.contact-info-row:hover {
+    color: #ffc107;
+}
+
+.contact-icon-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+.contact-socials {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-social-link {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .25);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.contact-social-link:hover {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.contact-handle {
+    color: #d8d0c2;
+    font-size: 13px;
+}
+
+.contact-panel-form {
+    flex: 1.4 1 480px;
+    background: #f2ede4;
+    padding: 64px;
+    box-sizing: border-box;
+}
+
+.contact-form-label {
+    color: #8a6600;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    margin-bottom: 20px;
+}
+
+.contact-panel-form .form-group {
+    margin-bottom: 18px;
+}
+
+.contact-panel-form .control-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+}
+
+.contact-panel-form .form-control {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid #d8cfbd;
+    border-radius: 4px;
+    padding: 11px 14px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background: #ffffff;
+}
+
+.contact-panel-form .form-control:focus {
+    outline: none;
+    border-color: #8a6600;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, .2);
+}
+
+.contact-panel-form textarea.form-control {
+    min-height: 96px;
+    resize: vertical;
+}
+
+.captcha-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-panel-form img.captcha {
+    border-radius: 4px;
+    border: 1.5px solid #d8cfbd;
+    display: block;
+}
+
+.captcha-refresh {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1.5px solid #d8cfbd;
+    background: #ffffff;
+    color: #1a1a1a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.captcha-refresh:hover {
+    border-color: #8a6600;
+    color: #8a6600;
+}
+
+.contact-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffc107;
+    border: 1.5px solid #ffc107;
+    color: #0a0a0a;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 30px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.contact-submit:hover,
+.contact-submit:focus {
+    color: #0a0a0a;
+}
+
+@media (max-width: 991.98px) {
+
+    .contact-panel-brand,
+    .contact-panel-form {
+        flex-basis: 100%;
+    }
+}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ose Dinning - Ember Menu Booked{% endblock %}
+{% block styling %}<link rel="stylesheet" href="{% static 'css/ember.css' %}">{% endblock %}
+
+{% block content %}
+<main id="main">
+
+  <!-- Confirmation header -->
+  <div class="ember-success-hero">
+    <div class="ember-success-badge">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="ember-eyebrow">Ember Menu &middot; Booking Confirmed</div>
+    <h1 class="ember-title" style="font-size: 42px;">Booking Received</h1>
+    <p class="ember-subtitle" style="max-width: 560px;">Thank you for booking the Ember Menu. Our team will reach out shortly to confirm your event details.</p>
+  </div>
+
+  <!-- Body -->
+  <div class="ember-body">
+    <div class="container" style="max-width: 820px;">
+
+      <div class="ember-section-label">Next Steps</div>
+      <div class="ember-card" style="margin-top: 0;">
+        <div class="ember-card__bar"></div>
+        <div class="ember-checklist">
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>If you'd like to add something to your menu, let us know at least 96 hours before the event &mdash; simply select the appropriate meal.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>All orders should be confirmed at least 3 days before the event date.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please give us the real dining time for your guests so we can serve you better.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please notify us of any allergies among your guests.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Changing or cancelling your event date attracts a 45% charge on the total budget, non-refundable.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please share the full details of your event location with us for food safety.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please check that the meal time is convenient for your guests.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Confirm that the designed menu suits your guests' preferences, or let us know so we can adjust it.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>The above menu can be adjusted to suit your preference.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#1b4332" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please tell us about any health considerations at least 3 days before the event date.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ember-section-label" style="margin-top: 40px;">Outside State Events</div>
+      <div class="ember-card" style="margin-top: 0;">
+        <div class="ember-card__bar"></div>
+        <div class="ember-checklist">
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#7a1f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Let us know this at the first conversation.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#7a1f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Full payment of the total bill is required.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#7a1f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Please arrange a display stand (e.g. table) where necessary.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#7a1f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Guest room accommodation for the chef and team must be available.</div>
+          </div>
+          <div class="ember-check-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6" stroke="#7a1f2b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>Space and kitchen access must be available to prep dishes where necessary.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="{% url 'pages:home' %}" class="ember-btn-outline">Back to Home</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+{% endblock %}

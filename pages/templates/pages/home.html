@@ -3,6 +3,7 @@
 {% load bootstrap %}
 
 {% block title %}Ose Dinning - Home{% endblock %}
+{% block styling %}<link rel="stylesheet" href="{% static 'css/home.css' %}">{% endblock %}
 
 {% block content %}
 <!-- Main -->
@@ -12,11 +13,11 @@
         <div class="container overflow-hidden">
         <div class="row gy-5 gy-lg-0 align-items-lg-center justify-content-lg-between">
             <div class="col-12 col-lg-6 order-1 order-lg-0">
-            <h1 class="display-3 fw-bold mb-3 animate__animated animate__backInDown">EQUISITE &amp; DELICIOUS</h1>
-            <p class="fs-4 mb-3 animate__animated animate__backInDown animate__delay-1s">Our passion for exceptional food has inspired ingenious recipes, 
-                crafted with dedication, care, and expertise. 
+            <h1 class="display-3 fw-bold mb-3 reveal">EQUISITE &amp; DELICIOUS</h1>
+            <p class="fs-4 mb-3 reveal reveal-delay-1">Our passion for exceptional food has inspired ingenious recipes,
+                crafted with dedication, care, and expertise.
                 OSE dining would offer you an experience which enables you to share and savor stories through food.</p>
-            <div class="d-grid gap-2 d-sm-flex animate__animated animate__backInDown animate__delay-2s">
+            <div class="d-grid gap-2 d-sm-flex reveal reveal-delay-2">
                 <a href="{% url 'pages:contact' %}" class="btn btn-warning bsb-btn-3xl btn-lg">Drop a message</a>
             </div>
             </div>
@@ -35,9 +36,32 @@
 
     
 
+    <!-- Ember Menu promo -->
+    <section class="ember-promo-strip py-4 py-xl-5 reveal">
+      <div class="container">
+        <div class="row align-items-center justify-content-between gy-3">
+          <div class="col-12 col-lg-8 d-flex align-items-center gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="flex-shrink-0">
+              <path d="M12 2v20M4.5 6.5l15 11M19.5 6.5l-15 11M2 12h20M6.5 4.5l11 15M17.5 4.5l-11 15" stroke="#ffc107" stroke-width="1.1" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <h3 class="fs-6 mb-1 text-warning text-uppercase">Festive Edition</h3>
+              <h2 class="h4 mb-0 text-white">The Ember Menu is here &mdash; a limited-time festive tasting menu.</h2>
+            </div>
+          </div>
+          <div class="col-12 col-lg-auto">
+            <a href="{% url 'pages:ember_menu' %}" class="btn ember-promo-btn btn-lg">
+              View Ember Menu
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Section - Services -->
     <!-- Service 6 - Bootstrap Brain Component -->
-    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1 animate__animated">
+    <section id="scrollspyServices" class="bsb-service-6 py-5 py-xl-8 bsb-section-py-xxl-1 reveal">
       <div class="container">
         <div class="row justify-content-md-center">
           <div class="col-12 col-md-10 col-lg-8 col-xl-7">
@@ -51,7 +75,7 @@
       <div class="container overflow-hidden">
         <div class="row gy-2 gy-md-0 gx-xxl-3">
           <div class="col-12 col-md-4">
-            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden service-card">
               <div class="card-body">
                 <h3 class="h2 mb-2">Casual Dining</h3>
                 <p class="mb-2 text-secondary">Whether you're marking a special occasion or just yearning for delicious cuisine, OSE Dining has you covered. Simply book us, and we'll bring our culinary expertise right to your doorstep.</p>
@@ -66,7 +90,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4">
-            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden service-card">
               <div class="card-body">
                 <h3 class="h2 mb-2">Fine Dining</h3>
                 <p class="mb-2 text-secondary">Experience fine dining excellence with OSE. 
@@ -83,7 +107,7 @@
             </div>
           </div>
           <div class="col-12 col-md-4">
-            <div class="card bg-transparent border-0 rounded-0 overflow-hidden">
+            <div class="card bg-transparent border-0 rounded-0 overflow-hidden service-card">
 
               <div class="card-body">
                 <h3 class="h2 mb-2">Customised Dining</h3>
@@ -107,7 +131,7 @@
   
       <!-- Section - About -->
       <!-- Process 1 - Bootstrap Brain Component -->
-      <section id="scrollspyAbout" class="py-5 py-xl-8 bsb-section-py-xxl-1 bg-black text-white animate__animated">
+      <section id="scrollspyAbout" class="py-5 py-xl-8 bsb-section-py-xxl-1 bg-black text-white reveal">
         <div class="container">
           <div class="row justify-content-md-center">
             <div class="col-12 col-md-10 col-lg-8 col-xl-7">
@@ -156,18 +180,25 @@
 </main>
 
 <script>
-  window.addEventListener('scroll', function() {
-    const div = document.getElementById('scrollspyServices');
-    const scrollspyAbout = document.getElementById('scrollspyAbout');
-    const rect = div.getBoundingClientRect();
-    const abt_rect = scrollspyAbout.getBoundingClientRect();
-    
-    // Check if the top and bottom of the div are within the viewport
-    if (rect.top >= 0) {
-      div.classList.add('animate__fadeInUp');
-    } else if (abt_rect.top >= 0) {
-      scrollspyAbout.classList.add('animate__fadeInUp');
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hero: reveal immediately on load (staggered via .reveal-delay-*)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.querySelectorAll('#scrollspyHero .reveal').forEach((el) => el.classList.add('is-visible'));
+      });
+    });
+
+    // Everything else: reveal once when it scrolls into view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('main > section.reveal').forEach((section) => observer.observe(section));
   });
 </script>
 {% endblock %}
