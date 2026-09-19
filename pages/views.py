@@ -1,4 +1,5 @@
 from typing import Any
+import logging
 from datetime import date
 from django.shortcuts import reverse
 from django.views import View
@@ -14,6 +15,23 @@ from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 
 from django.shortcuts import render, redirect
+
+logger = logging.getLogger(__name__)
+
+
+def send_booking_notifications(form, dining_type):
+    """Notify the admin and the customer; a failure here never blocks the booking itself."""
+    try:
+        notify_admin(form, dining_type)
+    except Exception:
+        logger.exception('Failed to send admin notification for %s booking', dining_type)
+
+    email = form.cleaned_data.get('email')
+    if email:
+        try:
+            notify_user(email)
+        except Exception:
+            logger.exception('Failed to send confirmation email for %s booking', dining_type)
 
 
 class HomePageView(TemplateView):
@@ -39,6 +57,7 @@ class EmberMenuView(FormView):
             form = EmberDiningForm(request.POST)
             if form.is_valid():
                 form.save()
+                send_booking_notifications(form, 'Ember menu')
                 return redirect('pages:ember_menu_success')
 
 class EmberMenuSuccessful(TemplateView):
@@ -123,9 +142,8 @@ class HireAChefView(FormView):
         if request.method == 'POST':
             form = HireForm(request.POST)
             if form.is_valid():
-                # notify_admin(form, 'hire')
-                # notify_user(form.cleaned_data['email'])
                 form.save()
+                send_booking_notifications(form, 'hire a chef')
                 return redirect('pages:hire_a_chef_success')
 
 
@@ -137,9 +155,8 @@ class CustomDiningView(FormView):
         if request.method == 'POST':
             form = CustomDiningForm(request.POST)
             if form.is_valid():
-                # notify_admin(form, 'Custom')
-                # notify_user(form.cleaned_data['email'])
                 form.save()
+                send_booking_notifications(form, 'custom')
                 return redirect('pages:customdining-successful')
 
 class FineDiningView(FormView):
@@ -150,9 +167,8 @@ class FineDiningView(FormView):
         if request.method == 'POST':
             form = FineDiningForm(request.POST)
             if form.is_valid():
-                # notify_admin(form, 'fine')
-                # notify_user(form.cleaned_data['email'])
                 form.save()
+                send_booking_notifications(form, 'fine')
                 return redirect('pages:finedining_success')
             
 
@@ -164,9 +180,8 @@ class CasualDiningView(FormView):
         if request.method == 'POST':
             form = CasualDiningForm(request.POST)
             if form.is_valid():
-                # notify_admin(form, 'casual')
-                # notify_user(form.cleaned_data['email'])
                 form.save()
+                send_booking_notifications(form, 'casual')
                 return redirect('pages:casual_dining_success')
 
 class ContactView(FormView):
@@ -179,8 +194,7 @@ class ContactView(FormView):
             form = ContactForm(request.POST)
             if form.is_valid():
                 form.save()
-                # notify_admin(form, 'contact')
-                # notify_user(form.cleaned_data['email'])
+                send_booking_notifications(form, 'contact')
                 return redirect('pages:success')
             else:
             # show form errors
@@ -204,7 +218,7 @@ def notify_user(email):
 
 # notify admin by email
 def notify_admin(form, dining_type):
-    name = form.cleaned_data['your_name']
+    name = form.cleaned_data.get('your_name') or form.cleaned_data.get('email') or 'Someone'
     subject = f'New message from {name} for {dining_type} dining'
     from_email = to = settings.EMAIL_HOST_USER
     text_content = f'{name} has requested for {dining_type} dining, below are the details:'
@@ -229,6 +243,7 @@ def notify_admin(form, dining_type):
     </html>
     """
 
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to], reply_to=[form.cleaned_data['email']])
+    reply_to = [form.cleaned_data['email']] if form.cleaned_data.get('email') else None
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to], reply_to=reply_to)
     msg.attach_alternative(html_content, "text/html")
     msg.send()
